@@ -1,3 +1,2 @@
-emodule/data/*
-emodule/cookies.txt
-
+cookies.txt
+*.json
