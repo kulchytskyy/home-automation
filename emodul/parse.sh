@@ -1,6 +1,5 @@
 
-JQ="jq"
-DATA_FILE="data.json"
+source config.sh
 FIELD_ID=$1
 FIELD_TYPE=$2
 
@@ -9,7 +8,7 @@ case $FIELD_TYPE in
   sensor)
     SELECTOR=".params.value";;
   fan)
-    SELECTOR=".params.fanNumber";;
+    SELECTOR=".params.gear";;
   status)
     SELECTOR=".params.workingStatus";;
 esac
