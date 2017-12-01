@@ -1,16 +1,11 @@
 #!/bin/bash
 
+source config.sh
+
 API_KEY="BQ3BEPLX2OPFEC81"
-API_KEY2="47AQH7TEOTQPFNJY"
-API_URL="https://api.thingspeak.com/update.json"
 
 URL_PARAMS=""
 FIELD_NUM=1
-
-URL_PARAMS2=""
-FIELD_NUM2=1
-
-WORK_DIR=$(pwd)
 
 ###
 ### ea2
@@ -49,33 +44,8 @@ URL_PARAMS="$URL_PARAMS&field$FIELD_NUM=$EM_FAN"
 FIELD_NUM=$(($FIELD_NUM+1))
 
 ###
-### w1
-###
-TEMP1=$(./temperature/w1/get.sh "28-0416812d86ff")
-echo "TEMP1=$TEMP1"
-URL_PARAMS2="$URL_PARAMS2&field$FIELD_NUM2=$TEMP1"
-FIELD_NUM2=$(($FIELD_NUM2+1))
-
-TEMP2=$(./temperature/w1/get.sh "28-0416816c14ff")
-echo "TEMP2=$TEMP2"
-URL_PARAMS2="$URL_PARAMS2&field$FIELD_NUM2=$TEMP2"
-FIELD_NUM2=$(($FIELD_NUM2+1))
-
-TEMP3=$(./temperature/w1/get.sh "28-0000052d025e")
-echo "TEMP3=$TEMP3"
-URL_PARAMS2="$URL_PARAMS2&field$FIELD_NUM2=$TEMP3"
-FIELD_NUM2=$(($FIELD_NUM2+1))
-
-###
 ### send
 ###
 echo $(date)
 echo "url_params=$URL_PARAMS"
 wget -qO- "$API_URL?api_key=$API_KEY&$URL_PARAMS"
-echo
-echo
-
-echo "url_params=$URL_PARAMS2"
-wget -qO- "$API_URL?api_key=$API_KEY2&$URL_PARAMS2"
-echo
-
