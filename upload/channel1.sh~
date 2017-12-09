@@ -22,7 +22,9 @@ done
 ###	emodul
 ###
 
+echo before get
 `./emodul/get.sh`
+echo after getk
 
 EM_TEMP1=`./emodul/parse.sh 1006 sensor`
 echo "EM_TEMP1=$EM_TEMP1"

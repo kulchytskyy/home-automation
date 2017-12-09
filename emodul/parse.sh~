@@ -1,5 +1,5 @@
 
-source emodul/config.sh
+source config.sh
 FIELD_ID=$1
 FIELD_TYPE=$2
 

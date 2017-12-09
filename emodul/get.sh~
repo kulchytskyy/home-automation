@@ -1,5 +1,4 @@
-
-source config.sh
+source emodul/config.sh
 
 LOGIN_CMD="$CURL $API_URL/login $COMMON_HEADER --data-binary '$LOGIN_PAYLOAD' > $LOGIN_DATA_FILE"
 #echo "$LOGIN_CMD"
@@ -11,16 +10,14 @@ MODULE_STATUS=`cat $LOGIN_DATA_FILE | $JQ ".modules[0] | .moduleStatus"`
 echo "CONTROLLER_STATUS=$CONTROLLER_STATUS"
 echo "MODULE_STATUS=$MODULE_STATUS"
 
+echo 123
 if [ "$CONTROLLER_STATUS" = '"active"' ] && [ "$MODULE_STATUS" = '"active"' ]; then 
+echo 456
+	UPDATE_DATA_CMD="$CURL $API_URL/update_data $COMMON_HEADER"
+	#echo "$UPDATE_DATA_CMD"
+	#echo
 
-	DAMP_PAYLOAD="[{\"ido\":251,\"params\":1,\"module_index\":0}]"
-	DAMP_CMD="$CURL $API_URL/send_control_data $COMMON_HEADER --data-binary '$DAMP_PAYLOAD' > $CMD_DATA_FILE"
-	#echo "$DAMP_CMD"
-	eval $DAMP_CMD
-
-	echo "RESULT:"
-	cat $CMD_DATA_FILE
+	eval "$UPDATE_DATA_CMD > $DATA_FILE"
 
 fi
-
 

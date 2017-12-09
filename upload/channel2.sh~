@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source upload/config.sh
+source config.sh
 
 API_KEY="47AQH7TEOTQPFNJY"
 
