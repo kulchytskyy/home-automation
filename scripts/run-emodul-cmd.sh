@@ -1,2 +1,2 @@
-cd ~/home-automation/emodul/
-bash $1.sh
+cd ~/home-automation
+bash emodul/$1.sh
