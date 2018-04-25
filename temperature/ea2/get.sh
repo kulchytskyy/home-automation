@@ -1,7 +1,24 @@
 #!/bin/bash
 
-F=/var/local/ea2temp.csv
+F=/var/local/es2temp.csv
 
-T1=`grep ,$1, $F | tail -n 1 | cut -d , -f 6`
-echo $T1
+LAST_LINE=`grep ,$1, $F | tail -n 1`
+#echo $LAST_LINE
 
+TEMP=`echo $LAST_LINE | cut -d , -f 6`
+#echo $TEMP
+
+DATE_STR=`echo $LAST_LINE | cut -d , -f 1`
+#echo $DATE_STR
+
+DATE=$(date -d "$DATE_STR")
+#echo $DATE
+
+VALUE=''
+AGO_DATE=$(date --date='10 minutes ago')
+if [[ $DATE > $AGO_DATE ]];
+then
+   VALUE=$TEMP
+fi
+
+echo $VALUE
