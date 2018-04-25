@@ -13,7 +13,9 @@ FIELD_NUM=1
 for i in $(seq 1 3); do
    EA2T=`./temperature/ea2/get.sh $i`
    echo "EA2T$i=$EA2T"
-   URL_PARAMS="$URL_PARAMS&field$FIELD_NUM=$EA2T"
+   if [ ! -z $EA2T ]; then
+      URL_PARAMS="$URL_PARAMS&field$FIELD_NUM=$EA2T"
+   fi
    FIELD_NUM=$(($FIELD_NUM+1))
 done
 
