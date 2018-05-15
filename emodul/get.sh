@@ -16,6 +16,8 @@ if [ "$CONTROLLER_STATUS" = '"active"' ] && [ "$MODULE_STATUS" = '"active"' ]; t
 	#echo
 
 	eval "$UPDATE_DATA_CMD > $DATA_FILE"
-
+	echo "active"
+else
+	echo "inactive"
 fi
 
