@@ -27,7 +27,7 @@ done
 EMODULE_STATUS=`./emodul/get.sh`
 echo "EMODULE_STATUS=$EMODULE_STATUS"
 
-if [ "$EMODULE_STATUS" = '"active"' ]; then 
+if [ "$EMODULE_STATUS" = 'active' ]; then 
 
 	EM_TEMP1=`./emodul/parse.sh 1006 sensor`
 	echo "EM_TEMP1=$EM_TEMP1"
