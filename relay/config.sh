@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SLEEP_TIMEOUT=5
-LOCKFILE=/var/lock/home-automation/relay.lck
+SLEEP_TIMEOUT=8
+LOCKFILE=/var/lock/relay.lck
 
 export SLEEP_TIMEOUT LOCKFILE
