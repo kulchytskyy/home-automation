@@ -19,6 +19,7 @@
 	<select name="action">
 		<option value="stop" selected="">stop</option>
 		<option value="start">start</option>
+		<option value="status">status</option>
 	</select>
 	<select name="hour">
 		<option value="0">0</option>

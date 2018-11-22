@@ -1,2 +1,2 @@
-cd ~/home-automation
-bash emodul/$1.sh
+DIR=$(dirname $0)
+bash $DIR/../emodul/$1.sh

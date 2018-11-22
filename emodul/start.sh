@@ -1,5 +1,5 @@
-
-source emodul/config.sh
+DIR=$(dirname $0)
+source $DIR/config.sh
 
 LOGIN_CMD="$CURL $API_URL/login $COMMON_HEADER --data-binary '$LOGIN_PAYLOAD' > $LOGIN_DATA_FILE"
 #echo "$LOGIN_CMD"
