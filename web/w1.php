@@ -1,5 +1,4 @@
-<html>
-<body>
+<?php include 'header.php';?>
 
 <?php
 
@@ -8,5 +7,4 @@ echo "<pre>$o</pre>";
 
 ?>
 
-</body>
-</html>
+<?php include 'footer.php';?>

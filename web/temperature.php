@@ -1,5 +1,4 @@
-<html>
-<body>
+<?php include 'header.php';?>
 
 <?php
 
@@ -29,5 +28,4 @@ $t7 = &shell_exec("$path2 3");
 echo "<p>outdoor=$t7";
 ?>
 
-</body>
-</html>
+<?php include 'footer.php';?>

@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
+<?php include 'header.php';?>
 
 <?php
   $action = $_POST['action'];
@@ -21,7 +17,4 @@
   echo "<br/>result:<br/>" . nl2br($result);
 ?>
 
-<p><a href="boiler.php">back</a>
-</body>
-</html>
-
+<?php include 'footer.php';?>
