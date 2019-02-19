@@ -46,52 +46,71 @@ if ($conn->connect_error) {
 				}
 			?> 
 		</select>
+		group by :
+		<select name="group_by" onchange="this.form.submit()">
+			<option value="MONTH" <?php if ( $_GET["group_by"] == 'MONTH') { echo "selected"; } ?> >month</option>
+			<option value="DAYOFYEAR" <?php if ( $_GET["group_by"] == 'DAYOFYEAR') { echo "selected"; } ?>>day of year</option>
+		</select>
 	</form>
 
 	<script>
-		var temperatures = {};
+		var t = {};
 		for (y = 2017; y<=2019; y++){
-			temperatures[y]=[];
+			t[y]=[];
 		}
 		<?php
-			$sql = "select year(`date`) as year, month(`date`) as month, avg(temperature) as temp
+			$sql = "select year(`date`) as year, " . $_GET["group_by"] . "(`date`) as month, avg(temperature) as temp
 					from temperatures
 					where sensor_id=" . $_GET["sensor_id"] . "
-					group by year(`date`), month(`date`)
+					group by year(`date`), " . $_GET["group_by"] . "(`date`)
 					order by year, month";
 			$result = $conn->query($sql);
 			while($row = $result->fetch_assoc()) {
-				echo "temperatures[" . $row["year"] . "][" . $row["month"] . "-1] = " . $row["temp"] . ";";
+				echo "t[" . $row["year"] . "][" . $row["month"] . "-1] = " . $row["temp"] . ";";
 			}
 		?> 
-		console.log(temperatures);
+		console.log(t);
 	</script>
 
 	<script>
-		var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		<?php
+		if ( $_GET["group_by"] == 'MONTH'){
+		?>
+				var labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		<?php
+		}
+		else{
+		?>
+			var labels = [];
+			for (var i=1; i<365; i++){
+				labels.push(i);
+			}
+		<?php
+		}
+		?>
 		var config = {
 			type: 'line',
 			data: {
-				labels: MONTHS,
+				labels: labels,
 				datasets: [{
 					label: '2017',
 					backgroundColor: '#FF0000',
 					borderColor: '#FF0000',
-					data: temperatures[2017],
+					data: t[2017],
 					fill: false,
 				}, {
 					label: '2018',
 					fill: false,
 					backgroundColor: '#0000FF',
 					borderColor: '#0000FF',
-					data: temperatures[2018],
+					data: t[2018],
 					fill: false,
 				}, {
 					label: '2019',
 					fill: false,
 					backgroundColor: '#00FFFF',
 					borderColor: '#00FFFF',
-					data: temperatures[2019],
+					data: t[2019],
 					fill: false,
 				}]
 			},
