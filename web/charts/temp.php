@@ -1,3 +1,15 @@
+<?php
+$servername = "localhost";
+$username = "t";
+$password = "t123456";
+$dbname = "t";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+}
+?> 
+
 <!doctype html>
 <html>
 
@@ -15,11 +27,46 @@
 </head>
 
 <body>
-	<div style="width:75%;">
-		<canvas id="canvas"></canvas>
-	</div>
-	<br>
-	<br>
+
+
+	<form action="#">
+		sensor:
+		<select name="sensor_id" onchange="this.form.submit()">
+			<?php
+				$sql = "SELECT * FROM sensors ORDER BY channel_id, field_num";
+				$result = $conn->query($sql);
+				while($row = $result->fetch_assoc()) {
+					echo "<option value='" . $row["id"] . "'";
+					if ( $row["id"] == $_GET["sensor_id"]){
+						echo " selected ";
+					}
+					echo ">";
+					echo $row["name"];
+					echo "</option>";
+				}
+			?> 
+		</select>
+	</form>
+
+	<script>
+		var temperatures = {};
+		for (y = 2017; y<=2019; y++){
+			temperatures[y]=[];
+		}
+		<?php
+			$sql = "select year(`date`) as year, month(`date`) as month, avg(temperature) as temp
+					from temperatures
+					where sensor_id=" . $_GET["sensor_id"] . "
+					group by year(`date`), month(`date`)
+					order by year, month";
+			$result = $conn->query($sql);
+			while($row = $result->fetch_assoc()) {
+				echo "temperatures[" . $row["year"] . "][" . $row["month"] . "-1] = " . $row["temp"] . ";";
+			}
+		?> 
+		console.log(temperatures);
+	</script>
+
 	<script>
 		var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		var config = {
@@ -30,21 +77,21 @@
 					label: '2017',
 					backgroundColor: '#FF0000',
 					borderColor: '#FF0000',
-					data: data2017,
+					data: temperatures[2017],
 					fill: false,
 				}, {
 					label: '2018',
 					fill: false,
 					backgroundColor: '#0000FF',
 					borderColor: '#0000FF',
-					data: data2018,
+					data: temperatures[2018],
 					fill: false,
 				}, {
 					label: '2019',
 					fill: false,
 					backgroundColor: '#00FFFF',
 					borderColor: '#00FFFF',
-					data: data2019,
+					data: temperatures[2019],
 					fill: false,
 				}]
 			},
@@ -87,6 +134,13 @@
 		};
 
 	</script>
+
+	<div style="width:75%;">
+		<canvas id="canvas"></canvas>
+	</div>
+	<br>
+	<br>
+	
 </body>
 
 </html>
