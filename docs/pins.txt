@@ -1,15 +1,15 @@
-18 0
+18 0		living2 down
 23 0
-24 0
-25 0
-12 0
-16 0
+24 0		living2 up
+25 0		kitchen down
+12 0		living3 down
+16 0		living3 up
 20 0
-21 0
+21 0		living1 up
 
 04 1
-17 0
-27 0
+17 0		kitchen up
+27 0		living1 down
 22 0
 05 1
 06 1
