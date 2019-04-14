@@ -8,6 +8,21 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
+
+if (isset($_GET["group_by"])){
+	$group_by = $_GET["group_by"];
+}
+else{
+	$group_by = 'MONTH';
+}
+
+if (isset($_GET["sensor_id"])){
+	$sensor_id = $_GET["sensor_id"];
+}
+else{
+	$sensor_id = 9;
+}
+
 ?> 
 
 <!doctype html>
@@ -37,7 +52,7 @@ if ($conn->connect_error) {
 				$result = $conn->query($sql);
 				while($row = $result->fetch_assoc()) {
 					echo "<option value='" . $row["id"] . "'";
-					if ( $row["id"] == $_GET["sensor_id"]){
+					if ( $row["id"] == $sensor_id){
 						echo " selected ";
 					}
 					echo ">";
@@ -48,8 +63,8 @@ if ($conn->connect_error) {
 		</select>
 		group by :
 		<select name="group_by" onchange="this.form.submit()">
-			<option value="MONTH" <?php if ( $_GET["group_by"] == 'MONTH') { echo "selected"; } ?> >month</option>
-			<option value="DAYOFYEAR" <?php if ( $_GET["group_by"] == 'DAYOFYEAR') { echo "selected"; } ?>>day of year</option>
+			<option value="MONTH" <?php if ( $group_by == 'MONTH') { echo "selected"; } ?> >month</option>
+			<option value="DAYOFYEAR" <?php if ( $group_by == 'DAYOFYEAR') { echo "selected"; } ?>>day of year</option>
 		</select>
 	</form>
 
@@ -59,10 +74,10 @@ if ($conn->connect_error) {
 			t[y]=[];
 		}
 		<?php
-			$sql = "select year(`date`) as year, " . $_GET["group_by"] . "(`date`) as month, avg(temperature) as temp
+			$sql = "select year(`date`) as year, " . $group_by . "(`date`) as month, avg(temperature) as temp
 					from temperatures
-					where sensor_id=" . $_GET["sensor_id"] . "
-					group by year(`date`), " . $_GET["group_by"] . "(`date`)
+					where sensor_id=" . $sensor_id . "
+					group by year(`date`), " . $group_by . "(`date`)
 					order by year, month";
 			$result = $conn->query($sql);
 			while($row = $result->fetch_assoc()) {
@@ -74,7 +89,7 @@ if ($conn->connect_error) {
 
 	<script>
 		<?php
-		if ( $_GET["group_by"] == 'MONTH'){
+		if ( $group_by == 'MONTH'){
 		?>
 				var labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		<?php
