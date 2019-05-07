@@ -25,7 +25,7 @@ async function process (connection, sensors) {
 
 async function process_sensor (connection, sensor) {
     console.log('++++++++++ sensor: ', sensor.name);
-    for (var i=3; i>=0; i--){
+    for (var i=1; i>=0; i--){
       var start_date = moment().subtract(i, 'months').startOf('month');
       console.log('start_date:',start_date);
       await func.delete_sensor_data(connection, sensor.id, start_date);
