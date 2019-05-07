@@ -23,6 +23,15 @@ else{
 	$sensor_id = 9;
 }
 
+
+function dayofyear2date( $tDay, $tFormat = 'j M' ) {
+    $day = intval( $tDay );
+    $day = ( $day == 0 ) ? $day : $day - 1;
+    $offset = intval( intval( $tDay ) * 86400 );
+    $str = date( $tFormat, strtotime( 'Jan 1, ' . date( 'Y' ) ) + $offset );
+    return( $str );
+}
+ 
 ?> 
 
 <!doctype html>
@@ -96,10 +105,14 @@ else{
 		}
 		else{
 		?>
-			var labels = [];
-			for (var i=1; i<365; i++){
-				labels.push(i);
-			}
+			<?php
+				echo "var labels = [];";
+				for ($i = 1; $i < 365; $i++) {
+					echo "labels.push(";
+					echo "'" . dayofyear2date($i) . "'";
+					echo ");";
+				}
+			?>
 		<?php
 		}
 		?>
