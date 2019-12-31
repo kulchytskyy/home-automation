@@ -17,6 +17,15 @@ if [ ! -z $TEMP1 ]; then
 fi
 
 ###
+TEMP2=$($DIR/../temperature/ea2/get_hum.sh 16)
+echo "TEMP2=$TEMP2"
+if [ ! -z $TEMP2 ]; then
+   URL_PARAMS="$URL_PARAMS&field2=$TEMP2"
+fi
+
+
+
+###
 ### send
 ###
 echo $(date)

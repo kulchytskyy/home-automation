@@ -52,6 +52,12 @@ if [ ! -z $TEMP7 ]; then
   URL_PARAMS="$URL_PARAMS&field7=$TEMP7"
 fi
 
+TEMP8=$(./temperature/ea2/get_hum.sh 16)
+echo "TEMP8=$TEMP8"
+if [ ! -z $TEMP8 ]; then
+  URL_PARAMS="$URL_PARAMS&field8=$TEMP8"
+fi
+
 
 ###
 ### send

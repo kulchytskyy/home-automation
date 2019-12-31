@@ -10,7 +10,7 @@ FIELD_NUM=1
 ###
 ### ea2
 ###
-for i in $(seq 1 3); do
+for i in 15 13 35; do
    EA2T=`./temperature/ea2/get.sh $i`
    echo "EA2T$i=$EA2T"
    if [ ! -z $EA2T ]; then
