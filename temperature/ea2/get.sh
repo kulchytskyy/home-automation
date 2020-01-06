@@ -2,10 +2,10 @@
 
 F=/var/local/ea2temp.csv
 
-LAST_LINE=`grep ,$1, $F | tail -n 1`
+LAST_LINE=`grep -a ,$1, $F | tail -n 1`
 #echo $LAST_LINE
 
-TEMP=`echo $LAST_LINE | cut -d , -f 6`
+TEMP=`echo $LAST_LINE | cut -d , -f 8`
 #echo $TEMP
 
 DATE_STR=`echo $LAST_LINE | cut -d , -f 1`
