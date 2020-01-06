@@ -11,12 +11,14 @@ TEMP=`echo $LAST_LINE | cut -d , -f 8`
 DATE_STR=`echo $LAST_LINE | cut -d , -f 1`
 #echo $DATE_STR
 
-DATE=$(date -d "$DATE_STR")
+DATE=$(date -d "$DATE_STR" +%s)
 #echo $DATE
 
 VALUE=''
-AGO_DATE=$(date --date='10 minutes ago')
-if [[ $DATE > $AGO_DATE ]];
+AGO_DATE=$(date --date='10 minutes ago' +%s)
+#echo $AGO_DATE
+
+if [ $DATE -ge $AGO_DATE ];
 then
    VALUE=$TEMP
 fi
