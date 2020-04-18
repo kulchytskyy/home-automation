@@ -4,15 +4,15 @@
 w1 3.3v       |     |     |    3.3v |      |   |  1 || 2  |   |      | 5v      |     |     | 5v block 1
 -             |   2 |   8 |   SDA.1 |   IN | 1 |  3 || 4  |   |      | 5V      |     |     | 5v block 2
 -             |   3 |   9 |   SCL.1 |   IN | 1 |  5 || 6  |   |      | 0v      |     |     | GND temp
-w1 data       |   4 |   7 | GPIO. 7 |   IN | 0 |  7 || 8  | 0 | IN   | TxD     | 15  | 14  |
-? w1 gnd      |     |     |      0v |      |   |  9 || 10 | 1 | IN   | RxD     | 16  | 15  |
+w1 data       |   4 |   7 | GPIO. 7 |   IN | 0 |  7 || 8  | 0 | IN   | TxD     | 15  | 14  | ?
+? w1 gnd      |     |     |      0v |      |   |  9 || 10 | 1 | IN   | RxD     | 16  | 15  | ?
 kitchen up    |  17 |   0 | GPIO. 0 |   IN | 1 | 11 || 12 | 0 | IN   | GPIO. 1 | 1   | 18  | living2 down
 living1 down  |  27 |   2 | GPIO. 2 |   IN | 0 | 13 || 14 |   |      | 0v      |     |     | GND block 1
 living4 up    |  22 |   3 | GPIO. 3 |   IN | 0 | 15 || 16 | 0 | IN   | GPIO. 4 | 4   | 23  | living6 down
               |     |     |    3.3v |      |   | 17 || 18 | 0 | IN   | GPIO. 5 | 5   | 24  | living2 up
-!             |  10 |  12 |    MOSI |   IN | 0 | 19 || 20 |   |      | 0v      |     |     | GND block 2
-!             |   9 |  13 |    MISO |   IN | 0 | 21 || 22 | 0 | IN   | GPIO. 6 | 6   | 25  | kitchen down
-              |  11 |  14 |    SCLK |   IN | 0 | 23 || 24 | 1 | IN   | CE0     | 10  | 8   | -
+bedroom up    |  10 |  12 |    MOSI |   IN | 0 | 19 || 20 |   |      | 0v      |     |     | GND block 2
+bedroom down  |   9 |  13 |    MISO |   IN | 0 | 21 || 22 | 0 | IN   | GPIO. 6 | 6   | 25  | kitchen down
+?             |  11 |  14 |    SCLK |   IN | 0 | 23 || 24 | 1 | IN   | CE0     | 10  | 8   | -
               |     |     |      0v |      |   | 25 || 26 | 1 | IN   | CE1     | 11  | 7   | -
 -             |   0 |  30 |   SDA.0 |   IN | 1 | 27 || 28 | 1 | IN   | SCL.0   | 31  | 1   | -
 !! --         |   5 |  21 | GPIO.21 |   IN | 1 | 29 || 30 |   |      | 0v      |     |     |
@@ -42,5 +42,5 @@ relay 3 = living5
 relay 4 = living5
 relay 5 = living6
 relay 6 = living6
-relay 7 =
-relay 8 =
+relay 7 = bedroom
+relay 8 = bedroom
