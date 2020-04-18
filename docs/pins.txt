@@ -1,21 +1,21 @@
 18 0		living2 down
-23 0
+23 0		living6 down
 24 0		living2 up
 25 0		kitchen down
 12 0		living3 down
 16 0		living3 up
-20 0
+20 0		living6 up
 21 0		living1 up
 
-04 1
+04 1		w1 data
 17 0		kitchen up
 27 0		living1 down
-22 0
+22 0		living4 up
 05 1
 06 1
-13 0
-19 0
-26 0
+13 0		living4 down
+19 0		living5 down
+26 0		living5 up
 
 14- disable uart
 15- disable uart
