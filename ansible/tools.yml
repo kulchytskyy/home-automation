@@ -11,6 +11,7 @@
           - joe
           - git
           - mc
+          - bc
         state: present
         
     
