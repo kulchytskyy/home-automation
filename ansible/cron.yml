@@ -1,0 +1,20 @@
+---
+#Install cron tasks
+
+- hosts: pi2
+  user: pi
+  tasks:
+    - name: "install cron task: relay up"
+      cron:
+        name: "relay up"
+        hour: "7"
+        minute: "00"
+        job: "~/ha/relay/all/up.sh >>~/relay.out 2>>~/relay.err"
+    - name: "install cron task: relay up"
+      cron:
+        name: "relay down"
+        hour: "21"
+        minute: "00"
+        job: "~/ha/relay/all/down.sh >>~/relay.out 2>>~/relay.err"
+        
+    
