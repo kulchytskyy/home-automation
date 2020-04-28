@@ -1,5 +1,7 @@
 
-source emodul/config.sh
+DIR=$(dirname $0)
+
+source $DIR/config.sh
 FIELD_ID=$1
 FIELD_TYPE=$2
 
