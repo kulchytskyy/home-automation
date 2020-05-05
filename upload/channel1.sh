@@ -3,7 +3,7 @@
 DIR=$(dirname $0)
 source $DIR/config.sh
 
-API_KEY=API_KEY1
+API_KEY=$API_KEY1
 
 URL_PARAMS=""
 FIELD_NUM=1
