@@ -1,0 +1,13 @@
+---
+
+- name: install packages
+  become: yes
+  package:
+    name: 
+      - joe
+      - git
+      - mc
+      - bc
+    state: present
+        
+    

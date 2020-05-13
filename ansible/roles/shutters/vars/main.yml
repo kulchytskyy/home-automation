@@ -1,0 +1,9 @@
+---
+
+shutters:
+  up:
+    hour: 7
+    min: 0
+  down:
+    hour: 21
+    min: 0

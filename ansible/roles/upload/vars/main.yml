@@ -1,0 +1,5 @@
+---
+
+upload:
+  interval:
+    min: 5
