@@ -1,0 +1,15 @@
+---
+
+- name: "install cron task: shutters up"
+  cron:
+    name: "shutters up"
+    hour: "{{shutters.up.hour}}"
+    minute: "{{shutters.up.min}}"
+    job: "~/ha/relay/all/up.sh >>/var/log/ha/relay.log 2>&1"
+- name: "install cron task: relay up"
+  cron:
+    name: "shutters down"
+    hour: "{{shutters.down.hour}}"
+    minute: "{{shutters.down.min}}"
+    job: "~/ha/relay/all/down.sh >>/var/log/ha/relay.log 2>&1"
+    

@@ -1,0 +1,5 @@
+---
+
+- include_tasks: packages.yml
+- include_tasks: git.yml
+- include_tasks: logs.yml

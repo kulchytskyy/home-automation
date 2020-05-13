@@ -1,0 +1,16 @@
+---
+
+- name: checkout repo
+  git:
+    repo: https://github.com/kulchytskyy/home-automation.git
+    dest: ~/home-automation
+
+- name: create a symbolic link
+  file:
+    src: ~/home-automation
+    dest: ~/ha
+    state: link        
+
+   
+        
+    

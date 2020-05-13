@@ -1,0 +1,14 @@
+---
+
+- hosts: pi2
+  user: pi
+  roles:
+  - common
+  - shutters
+  - role: upload
+    vars: 
+      channels: [3]
+  #- sdr
+
+  
+  

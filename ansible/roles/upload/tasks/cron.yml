@@ -1,0 +1,10 @@
+---
+
+- name: "install cron task: temperature"
+  cron:
+    name: "temperature {{item}}"
+    minute: "*/{{upload.interval.min}}"
+    job: "cd ~/home-automation/ && ./upload/channel{{item}}.sh >>/var/log/ha/upload{{item}}.log 2>&1"
+  loop: "{{channels}}"
+         
+    

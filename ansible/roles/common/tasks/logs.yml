@@ -1,0 +1,11 @@
+---
+
+- name: create logs directory
+  file:
+    path: /var/log/ha
+    state: directory
+    owner: pi
+  become: yes
+   
+        
+    

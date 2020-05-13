@@ -1,0 +1,11 @@
+---
+
+- hosts: pi
+  user: pi
+  roles:
+  - common
+  - role: upload
+    vars: 
+      channels: [1,2]
+  
+  
