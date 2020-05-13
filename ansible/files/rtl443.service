@@ -1,0 +1,14 @@
+[Unit]
+Description = RTL 433 listening service
+After = network.target
+
+[Service]
+#ExecStart = rtl_433 -R 31 -q -F csv
+ExecStart = /home/pi/home-automation/temperature/ea2/daemon.sh
+StandardOutput=file:/var/ha/rtl/temp.csv
+StandardError=file:/var/log/ha/ea2.log
+WorkingDirectory=/var/ha/rtl/
+User=pi
+
+[Install]
+WantedBy = multi-user.target

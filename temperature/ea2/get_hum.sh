@@ -1,6 +1,6 @@
 #!/bin/bash
 
-F=/var/local/ea2temp.csv
+F=/var/ha/rtl/temp.csv
 
 LAST_LINE=`grep -a ,$1, $F | tail -n 1`
 #echo $LAST_LINE
