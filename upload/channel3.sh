@@ -7,6 +7,8 @@ API_KEY=$API_KEY3
 
 URL_PARAMS=""
 
+echo $(date) 
+
 ###
 ### w1
 ###
@@ -19,6 +21,7 @@ fi
 ###
 ### send
 ###
-echo $(date)
 echo "url_params=$URL_PARAMS"
 wget -qO- "$API_URL?api_key=$API_KEY&$URL_PARAMS"
+
+echo -e "\n\n"

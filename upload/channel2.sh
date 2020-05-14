@@ -8,6 +8,8 @@ API_KEY=$API_KEY2
 URL_PARAMS=""
 FIELD_NUM=1
 
+echo $(date) 
+
 ###
 ### w1
 ###
@@ -63,6 +65,7 @@ fi
 ###
 ### send
 ###
-echo $(date)
 echo "url_params=$URL_PARAMS"
 wget -qO- "$API_URL?api_key=$API_KEY&$URL_PARAMS"
+
+echo -e "\n\n"
