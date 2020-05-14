@@ -1,4 +1,6 @@
 ---
 
-- include_tasks: packages.yml
-
+- include_tasks: rtl_sdr.yml
+- include_tasks: rtl_433.yml
+- include_tasks: folders.yml
+- include_tasks: service.yml

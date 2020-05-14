@@ -1,0 +1,16 @@
+---
+
+- name: copy service file
+  copy:
+    src: rtl433.service
+    dest: /etc/systemd/system/rtl433.service
+  become: yes
+
+- name: start rtl service
+  systemd: 
+    name: rtl433 
+    state: started
+    enabled: yes
+    daemon_reload: yes
+  become: yes
+

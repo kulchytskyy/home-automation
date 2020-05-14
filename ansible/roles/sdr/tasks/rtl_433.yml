@@ -1,0 +1,57 @@
+---
+
+- name: check rtl_433 installed
+  stat:
+    path: /usr/local/bin/rtl_433
+  register: rtl433_binary
+
+- name: install dependencies
+  become: yes
+  package:
+    name: 
+      - cmake
+      - build-essential
+      - python-pip
+      - libusb-1.0-0-dev
+      - python-numpy 
+      - pandoc
+    state: present
+  when: not rtl433_binary.stat.exists
+
+- name: clone repo
+  git:
+    repo: https://github.com/merbanan/rtl_433.git
+    dest: "{{ rtl433_download_location }}"
+  when: not rtl433_binary.stat.exists
+
+- name: build dir
+  file: 
+    path: "{{ rtl433_download_location }}/build"
+    state: directory
+    mode: 0755
+  when: not rtl433_binary.stat.exists
+
+- name: cmake
+  command: 
+    cmd: cmake ../
+    chdir: "{{ rtl433_download_location }}/build"
+    creates: "{{ rtl433_download_location }}/build/*.cmake"
+  when: not rtl433_binary.stat.exists
+    
+- name: make
+  make: 
+    chdir: "{{ rtl433_download_location }}/build"
+  when: not rtl433_binary.stat.exists
+
+- name: install
+  make: 
+    target: install
+    chdir: "{{rtl433_download_location}}/build"
+  become: yes
+  when: not rtl433_binary.stat.exists
+
+- name: ldconfig
+  command: ldconfig
+  become: yes
+  when: not rtl433_binary.stat.exists
+

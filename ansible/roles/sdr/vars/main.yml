@@ -1,3 +1,4 @@
 ---
 
 sdr_download_location: /tmp/rtl-sdr
+rtl433_download_location: /tmp/rtl-433
