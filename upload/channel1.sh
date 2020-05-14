@@ -8,7 +8,6 @@ API_KEY=$API_KEY1
 URL_PARAMS=""
 FIELD_NUM=1
 
-echo "========================"
 echo $(date) 
 
 ###
@@ -62,3 +61,5 @@ echo "url_params=$URL_PARAMS"
 if [ ! -z $URL_PARAMS ]; then
 	wget -qO- "$API_URL?api_key=$API_KEY&$URL_PARAMS"
 fi
+
+echo -e "\n\n"
