@@ -6,4 +6,4 @@ shutters:
     min: 0
   down:
     hour: 21
-    min: 0
+    min: 30
