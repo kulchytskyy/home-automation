@@ -1,0 +1,8 @@
+---
+
+dbpass: "root"
+db:
+  name: "ha"
+  user:
+    name: "pi"
+    password: "{{ vault_db_password }}"
