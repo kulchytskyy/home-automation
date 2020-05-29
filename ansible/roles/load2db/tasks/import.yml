@@ -1,0 +1,21 @@
+---
+
+- name: install dependencies
+  become: yes
+  package:
+    name: 
+      - npm
+    state: present
+
+- name: install npm packages
+  npm:
+    path: ~/ha/load2db
+    executable: /usr/bin/npm
+ 
+- name: create settings file
+  template:
+    src: files/settings.js.j2
+    dest: ~/ha/load2db/includes/settings.js
+    owner: pi
+    mode: u=rw,g=,o=
+    

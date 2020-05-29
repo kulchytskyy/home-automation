@@ -1,0 +1,8 @@
+const db_connection_prop = {
+  host: "localhost",
+  user: "{{ db.user.name }}",
+  password: "{{ db.user.password }}",
+  database : '{{ db.name }}'
+};
+
+exports.db_connection_prop = db_connection_prop;

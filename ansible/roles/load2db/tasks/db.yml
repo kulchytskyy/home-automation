@@ -1,0 +1,36 @@
+---
+
+- name: create db user
+  become: yes
+  mysql_user:
+    name: "{{ db.user.name }}"
+    password: "{{ db.user.password }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    priv: "{{ db.name }}.*:ALL"
+    host: "%"
+    state: present
+    check_implicit_admin: yes
+    
+- name: create db
+  become: yes
+  mysql_db:
+    name: "{{ db.name }}"
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    state: present
+  register: database_exists
+
+- name: copy script files
+  copy: 
+    src: create.sql 
+    dest: /tmp/create.sql
+  when: database_exists.changed
+    
+- name: import data
+  mysql_db: 
+    name: "{{ db.name }}"
+    state: "import"
+    target: "/tmp/create.sql"
+    login_user: "{{ db.user.name }}"
+    login_password: "{{ db.user.password }}"
+  when: database_exists.changed
+           
