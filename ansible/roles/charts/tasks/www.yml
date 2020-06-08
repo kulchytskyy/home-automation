@@ -1,0 +1,31 @@
+---
+
+- name: copy php test file
+  copy:
+    src: test.php
+    dest: /var/www/html
+  become: yes
+
+- name: create directory
+  file:
+    path: /var/www/html/ha/
+    state: directory
+    owner: pi
+  become: yes  
+
+- name: copy charts www files
+  copy:
+    src: charts/
+    dest: /var/www/html/ha/charts/
+
+- name: include db vars
+  include_vars:
+    file: ../../load2db/vars/main.yml
+    
+- name: create config file
+  template:
+    src: files/ha_config.ini.j2
+    dest: /var/www/ha_config.ini
+    owner: www-data
+    mode: u=r,g=,o=
+  become: yes

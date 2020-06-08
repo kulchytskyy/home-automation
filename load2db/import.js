@@ -1,4 +1,4 @@
-const mysql = require('mysql2/promise');
+const mysql = require('promise-mysql2');
 const moment = require('moment');
 
 var settings = require('./includes/settings');

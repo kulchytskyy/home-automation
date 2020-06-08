@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 
 async function read_sensor_info (connection, sensor_id) {
     const sql = "SELECT * FROM sensors WHERE id=?";
-    return await connection.query(sql_sensor_get, [sensor_id]).then(function (rows, fields){
+    return await connection.query(sql, [sensor_id]).then(function (rows, fields){
         return rows[0][0];
     });
 }
