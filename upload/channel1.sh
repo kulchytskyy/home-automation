@@ -59,7 +59,7 @@ fi
 ###
 echo "url_params=$URL_PARAMS"
 if [ ! -z $URL_PARAMS ]; then
-	wget -qO- "$API_URL?api_key=$API_KEY&$URL_PARAMS"
+	wget -nv -O- "$API_URL?api_key=$API_KEY&$URL_PARAMS"
 fi
 
 echo -e "\n\n"
