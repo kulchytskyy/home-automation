@@ -1,11 +1,15 @@
 #!/bin/bash
 
-F=/var/ha/rtl/temp.csv
+# arg1 - channel id
+# arg2 - value column index (8 - temperature, 9 - huminity)
 
-LAST_LINE=`grep -a ,$1, $F | tail -n 1`
+F=/var/ha/rtl/temp.csv
+MODEL="TFA-TwinPlus"
+
+LAST_LINE=`grep -a $MODEL,$1, $F | tail -n 1`
 #echo $LAST_LINE
 
-TEMP=`echo $LAST_LINE | cut -d , -f 8`
+TEMP=`echo $LAST_LINE | cut -d , -f $2`
 #echo $TEMP
 
 DATE_STR=`echo $LAST_LINE | cut -d , -f 1`

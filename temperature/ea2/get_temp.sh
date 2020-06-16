@@ -1,3 +1,5 @@
 #!/bin/bash
 
-bash get.sh $1 8
+DIR=$(dirname $0)
+
+bash $DIR/get.sh $1 8

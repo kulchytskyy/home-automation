@@ -1,24 +1,5 @@
 #!/bin/bash
 
-F=/var/ha/rtl/temp.csv
+DIR=$(dirname $0)
 
-LAST_LINE=`grep -a ,$1, $F | tail -n 1`
-#echo $LAST_LINE
-
-TEMP=`echo $LAST_LINE | cut -d , -f 9`
-#echo $TEMP
-
-DATE_STR=`echo $LAST_LINE | cut -d , -f 1`
-#echo $DATE_STR
-
-DATE=$(date -d "$DATE_STR")
-#echo $DATE
-
-VALUE=''
-AGO_DATE=$(date --date='10 minutes ago')
-if [[ $DATE > $AGO_DATE ]];
-then
-   VALUE=$TEMP
-fi
-
-echo $VALUE
+bash $DIR/get.sh $1 9
