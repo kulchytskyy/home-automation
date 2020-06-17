@@ -9,13 +9,15 @@ URL_PARAMS=""
 
 echo $(date) 
 
-H2=$($DIR/../../temperature/ea2/get_hum.sh 42)
-echo "H2=$H2"
-if [ ! -z $H2 ]; then
-  URL_PARAMS="$URL_PARAMS&field2=$H2"
+H2_HUM=$($DIR/../../temperature/ea2/get_hum.sh 42)
+H2_TEMP=$($DIR/../../temperature/ea2/get_temp.sh 42)
+echo "H2_HUM=$H2_HUM"
+if [ ! -z $H2_HUM ]; then
+  H2_ABS_HUM=$($DIR/../../humidity/abshum.sh $H2_HUM $H2_TEMP)
+  echo "H2_ABS_HUM=$H2_ABS_HUM"
+
+  URL_PARAMS="$URL_PARAMS&field2=$H2&field6=$H2_ABS_HUM"
   
-  ABS_H2=$($DIR/../../humidity/abshum.sh $H2 22)
-  echo "abs hum2= $ABS_H2"
 fi
 
 
