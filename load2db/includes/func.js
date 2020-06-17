@@ -42,8 +42,13 @@ exports.import_year = import_year;
 
 async function import_month (connection, sensor, year, month) {
     console.log('========== month=', month, year);
+    var currDate = moment();
     var date = moment({ year:year, month:month-1});
     for (var day=1; day<=date.daysInMonth(); day++){
+        if (day > currDate.date() && currDate.month() == month-1 && currDate.year() == year){
+            console.log("Stopped on current date");
+            break;
+        }
         await import_day(connection, sensor, year, month, day);
     }
     return "month done";

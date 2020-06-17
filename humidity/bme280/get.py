@@ -18,7 +18,10 @@ data = bme280.sample(bus, address, calibration_params)
 #print(data.timestamp)
 #print(data.temperature)
 #print(data.pressure)
-print(round(data.humidity,2))
+#print(round(data.humidity,2))
 
 # there is a handy string representation too
 #print(data)
+
+print (str(round(data.temperature,2)) + "|" + str(round(data.humidity,2)))
+
