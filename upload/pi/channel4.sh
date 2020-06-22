@@ -16,7 +16,7 @@ if [ ! -z $H2_HUM ]; then
   H2_ABS_HUM=$($DIR/../../humidity/abshum.sh $H2_HUM $H2_TEMP)
   echo "H2_ABS_HUM=$H2_ABS_HUM"
 
-  URL_PARAMS="$URL_PARAMS&field2=$H2&field6=$H2_ABS_HUM"
+  URL_PARAMS="$URL_PARAMS&field2=$H2_HUM&field6=$H2_ABS_HUM"
   
 fi
 
