@@ -12,10 +12,17 @@
     path: ~/ha/load2db
     executable: /usr/bin/npm
  
-- name: create settings file
+#- name: create settings file
+#  template:
+#    src: files/settings.js.j2
+#    dest: ~/ha/load2db/includes/settings.js
+#    owner: pi
+#    mode: u=rw,g=,o=
+   
+- name: create config file
   template:
-    src: files/settings.js.j2
-    dest: ~/ha/load2db/includes/settings.js
+    src: files/ha_config.ini.j2
+    dest: ~/ha/load2db/ha_config.ini
     owner: pi
-    mode: u=rw,g=,o=
-    
+    mode: u=r,g=,o=
+  

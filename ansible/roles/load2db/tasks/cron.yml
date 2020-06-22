@@ -1,0 +1,9 @@
+---
+
+- name: "install cron task"
+  cron:
+    name: "load2db"
+    hour: "05"
+    minute: "10"
+    job: "node ~/ha/load2db/import_all.js >>/var/log/ha/load2db.log 2>&1"
+    

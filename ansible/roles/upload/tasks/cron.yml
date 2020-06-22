@@ -1,10 +1,10 @@
 ---
 
-- name: "install cron task: temperature"
+- name: "install cron task: temperature: {{ansible_hostname}}"
   cron:
     name: "temperature {{item}}"
-    minute: "*/{{upload.interval.min}}"
-    job: "cd ~/home-automation/ && ./upload/channel{{item}}.sh >>/var/log/ha/upload{{item}}.log 2>&1"
+    minute: "{{offset}}-59/{{upload.interval.min}}"
+    job: "~/ha/upload/{{ansible_hostname}}/channel{{item}}.sh >>/var/log/ha/upload{{item}}.log 2>&1"
   loop: "{{channels}}"
          
-    
+  

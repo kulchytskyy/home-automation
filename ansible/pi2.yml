@@ -7,14 +7,15 @@
       include_vars: "vault.yml"
       tags: ["always"]
   roles:
-    # - load2db
-    - charts
-   
-  #- common
-  #- shutters
-  #- role: upload
-  #  vars: 
-  #    channels: [3]
+    #- common
+    #- load2db
+    #- charts
+    #- shutters
+    - role: upload
+      vars: 
+        channels: [3,4]
+        offset: 0
+
   
   
   
