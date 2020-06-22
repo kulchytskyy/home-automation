@@ -1,8 +1,8 @@
-const db_connection_prop = {
-  host: "localhost",
-  user: "t",
-  password: "t123456",
-  database : 't'
-};
+const loadIniFile = require('read-ini-file')
+const path = require('path')
 
-exports.db_connection_prop = db_connection_prop;
+const config_path = path.join(__dirname, '../ha_config.ini')
+const config = loadIniFile.sync(config_path)
+console.log(config.database.host)
+
+exports.db_connection_prop = config.database;

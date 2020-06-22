@@ -13,6 +13,7 @@
     "moment": "^2.26.0",
     "mysql2-promise": "^0.1.4",
     "node-fetch": "^2.6.0",
-    "promise-mysql2": "^1.0.0"
+    "promise-mysql2": "^1.0.0",
+    "read-ini-file": "^3.0.0"
   }
 }
