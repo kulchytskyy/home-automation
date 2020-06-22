@@ -24,7 +24,7 @@ if [ ! -z $H1_DATA ]; then
    H1_ABS_HUM=$($DIR/../../humidity/abshum.sh $H1_HUM $H1_TEMP)
    echo "H1_ABS_HUM=$H1_ABS_HUM"
 
-   URL_PARAMS="$URL_PARAMS&field1=$H1&field5=$H1_ABS_HUM"
+   URL_PARAMS="$URL_PARAMS&field1=$H1_HUM&field5=$H1_ABS_HUM"
 fi
 
 ###
