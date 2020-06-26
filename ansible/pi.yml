@@ -3,8 +3,8 @@
 - hosts: pi
   user: pi
   roles:
-  #- common
-  #- sdr
+  - common
+  - sdr
   - role: upload
     vars: 
       channels: [1,2,4]
