@@ -1,5 +1,9 @@
 ---
 
+- name: blacklist dvb_usb_rtl28xxu
+  shell: echo 'blacklist dvb_usb_rtl28xxu' | tee --append /etc/modprobe.d/blacklist-dvb_usb_rtl28xxu.conf
+  become: yes
+
 - name: copy service file
   copy:
     src: rtl433.service
