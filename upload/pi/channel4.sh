@@ -20,6 +20,17 @@ if [ ! -z $H2_HUM ]; then
   
 fi
 
+H3_HUM=$($DIR/../../temperature/ea2/get_hum.sh 205)
+H3_TEMP=$($DIR/../../temperature/ea2/get_temp.sh 205)
+echo "H3_HUM=$H3_HUM"
+if [ ! -z $H3_HUM ]; then
+  H3_ABS_HUM=$($DIR/../../humidity/abshum.sh $H3_HUM $H3_TEMP)
+  echo "H3_ABS_HUM=$H3_ABS_HUM"
+
+  URL_PARAMS="$URL_PARAMS&field3=$H3_HUM&field7=$H3_ABS_HUM"
+  
+fi
+
 
 
 ###
