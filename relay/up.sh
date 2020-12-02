@@ -8,6 +8,10 @@ if [ -f $DIR/config.sh ]; then
 fi
 source $DIR/pins.sh
 
-bash $DIR/../run.sh $UP_PIN $DOWN_PIN
+echo "`date -u` Switching to water heating" >> /var/log/ha/dhw.log
+
+echo "WATER" > /var/ha/boiler/dhw
+
+#bash $DIR/../run.sh $UP_PIN $DOWN_PIN
 
  
