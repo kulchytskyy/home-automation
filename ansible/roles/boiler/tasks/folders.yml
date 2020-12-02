@@ -1,0 +1,11 @@
+---
+
+- name: create data directory
+  file:
+    path: /var/ha/boiler
+    state: directory
+    owner: pi
+  become: yes
+   
+        
+    

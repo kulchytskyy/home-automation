@@ -1,0 +1,9 @@
+---
+
+- name: "install cron task: boiler"
+  cron:
+    name: "boiler dhw monitor"
+    minute: "*/2"
+    job: "~/ha/boiler/monitor_dhw.sh >>/var/log/ha/dhw_monitor.log 2>&1"
+         
+  
