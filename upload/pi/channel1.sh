@@ -13,7 +13,7 @@ echo $(date)
 ###
 ### ea2
 ###
-for i in 15 14 35; do
+for i in 15 14 31; do
    EA2T=`$DIR/../../temperature/ea2/get_temp.sh $i`
    echo "EA2T$i=$EA2T"
    if [ ! -z $EA2T ]; then
@@ -32,26 +32,21 @@ echo "EMODULE_STATUS=$EMODULE_STATUS"
 
 if [ "$EMODULE_STATUS" = 'active' ]; then 
 
-	EM_TEMP1=`$DIR/../../emodul/parse.sh 1006 sensor`
-	echo "EM_TEMP1=$EM_TEMP1"
-	URL_PARAMS="$URL_PARAMS&field$FIELD_NUM=$EM_TEMP1"
-	FIELD_NUM=$(($FIELD_NUM+1))
+	EM_CH_TEMP=`$DIR/../../emodul/parse.sh 1006 sensor`
+	echo "EM_CH_TEMP=$EM_CH_TEMP"
+	URL_PARAMS="$URL_PARAMS&field4=$EM_CH_TEMP"
 
-	#EM_TEMP2=`$DIR/../../emodul/parse.sh 1008 sensor`
-	#echo "EM_TEMP2=$EM_TEMP2"
-	#URL_PARAMS="$URL_PARAMS&field$FIELD_NUM=$EM_TEMP2"
-	#FIELD_NUM=$(($FIELD_NUM+1))
-
-	EM_TEMP3=`$DIR/../../emodul/parse.sh 1009 sensor`
-	echo "EM_TEMP3=$EM_TEMP3"
-	URL_PARAMS="$URL_PARAMS&field$FIELD_NUM=$EM_TEMP3"
-	FIELD_NUM=$(($FIELD_NUM+1))
+	EM_OUTDOOR_TEMP=`$DIR/../../emodul/parse.sh 1009 sensor`
+	echo "EM_OUTDOOR_TEMP=$EM_OUTDOOR_TEMP"
+	URL_PARAMS="$URL_PARAMS&field5=$EM_OUTDOOR_TEMP"
 
 	EM_FAN=`$DIR/../../emodul/parse.sh 1011 fan`
 	echo "EM_FAN=$EM_FAN"
-	URL_PARAMS="$URL_PARAMS&field$FIELD_NUM=$EM_FAN"
-	FIELD_NUM=$(($FIELD_NUM+1))
+	URL_PARAMS="$URL_PARAMS&field6=$EM_FAN"
 
+	EM_DHW_TEMP=`$DIR/../../emodul/parse.sh 1007 sensor`
+	echo "EM_DHW_TEMP=$EM_DHW_TEMP"
+	URL_PARAMS="$URL_PARAMS&field7=$EM_DHW_TEMP"
 fi
 
 ###

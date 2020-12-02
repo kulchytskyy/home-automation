@@ -47,6 +47,7 @@ if [ "$CONTROLLER_STATUS" = '"active"' ] && [ "$MODULE_STATUS" = '"active"' ]; t
 	STATUS=`cat $DATA_FILE | $JQ ".tiles[] | select (.id == 2040) | .params.statusId"`
 
 	CH_TEMP=$(sensor_format `cat $DATA_FILE | $JQ ".tiles[] | select (.id == 1006) | .params.value"`)
+	DHW_TEMP=$(sensor_format `cat $DATA_FILE | $JQ ".tiles[] | select (.id == 1007) | .params.value"`)
 	RETURN_TEMP=`cat $DATA_FILE | $JQ ".tiles[] | select (.id == 1012) | .params.returnTemp"`
 	FLUE_GASS_TEMP=$(sensor_format `cat $DATA_FILE | $JQ ".tiles[] | select (.id == 1008) | .params.value"`)
 	OUTDOOR_TEMP=$(sensor_format `cat $DATA_FILE | $JQ ".tiles[] | select (.id == 1009) | .params.value"`)
@@ -64,6 +65,7 @@ if [ "$CONTROLLER_STATUS" = '"active"' ] && [ "$MODULE_STATUS" = '"active"' ]; t
 	echo "STATUS=$(display_status $STATUS)"
 	echo
 	echo "CH_TEMP=$CH_TEMP"
+	echo "DHW_TEMP=$DHW_TEMP"
 	echo "RETURN_TEMP=$RETURN_TEMP"
 	echo "FLUE_GASS_TEMP=$FLUE_GASS_TEMP"
 	echo "OUTDOOR_TEMP=$OUTDOOR_TEMP"
