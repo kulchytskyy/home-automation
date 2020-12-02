@@ -3,7 +3,12 @@
 DIR=$(dirname $0)
 source $DIR/config.sh
 
-LOGIN_CMD="$CURL $API_URL/login $COMMON_HEADER --data-binary '$LOGIN_PAYLOAD' > $LOGIN_DATA_FILE"
+echo "`date -u`"
+
+if [[ `cat /var/ha/boiler/dhw` == "WATER" ]]; then
+        echo "DHW heating active. Switching off."
+        bash $DIR/../boiler/relay/house.sh
+fi
 #echo "$LOGIN_CMD"
 #echo
 

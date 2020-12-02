@@ -10,6 +10,7 @@ LOGIN_CMD="$CURL $API_URL/login $COMMON_HEADER --data-binary '$LOGIN_PAYLOAD' > 
 eval $LOGIN_CMD
 CONTROLLER_STATUS=`cat $LOGIN_DATA_FILE | $JQ ".modules[0] | .controllerStatus"`
 MODULE_STATUS=`cat $LOGIN_DATA_FILE | $JQ ".modules[0] | .moduleStatus"`
+echo "`date -u`"
 echo "CONTROLLER_STATUS=$CONTROLLER_STATUS"
 echo "MODULE_STATUS=$MODULE_STATUS"
 
