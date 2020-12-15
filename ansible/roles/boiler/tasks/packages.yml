@@ -1,0 +1,8 @@
+---
+
+- name: install dependencies
+  become: yes
+  package:
+    name: 
+      - jq
+    state: present
