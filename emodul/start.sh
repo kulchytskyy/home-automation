@@ -23,7 +23,8 @@ if [ "$CONTROLLER_STATUS" = '"active"' ] && [ "$MODULE_STATUS" = '"active"' ]; t
 
 	echo "RESULT:"
 	cat $CMD_DATA_FILE
-
+	echo
+	
 fi
 
 

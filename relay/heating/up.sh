@@ -9,10 +9,10 @@ if [ -f $DIR/config.sh ]; then
 fi
 source $DIR/pins.sh
 
-echo "`date -u` Switching to water heating" | tee $LOGFILE
+echo "`date -u` Switching to water heating" | tee -a $LOGFILE
 
 if [[ `cat /var/ha/boiler/dhw` == "WATER" ]]; then
-	echo "Already heating water" | tee $LOGFILE
+	echo "Already heating water" | tee -a $LOGFILE
 	exit
 fi
 

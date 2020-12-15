@@ -9,6 +9,8 @@ if [[ `cat /var/ha/boiler/dhw` == "WATER" ]]; then
         echo "DHW heating active. Switching off."
         bash $DIR/../boiler/relay/house.sh
 fi
+
+LOGIN_CMD="$CURL $API_URL/login $COMMON_HEADER --data-binary '$LOGIN_PAYLOAD' > $LOGIN_DATA_FILE"
 #echo "$LOGIN_CMD"
 #echo
 
@@ -25,8 +27,10 @@ if [ "$CONTROLLER_STATUS" = '"active"' ] && [ "$MODULE_STATUS" = '"active"' ]; t
 	#echo "$DAMP_CMD"
 	eval $DAMP_CMD
 
+	
 	echo "RESULT:"
 	cat $CMD_DATA_FILE
+	echo
 
 fi
 
