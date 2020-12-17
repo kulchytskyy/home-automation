@@ -7,3 +7,6 @@ localhost ansible_connection=local
 
 [pi2]
 192.168.1.72
+
+[pi3]
+192.168.1.69
