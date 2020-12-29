@@ -6,7 +6,7 @@ humidity SDA  |   2 |   8 |   SDA.1 |   IN | 1 |  3 || 4  |   |      | 5V      |
 humidity SCL  |   3 |   9 |   SCL.1 |   IN | 1 |  5 || 6  |   |      | 0v      |     |     | GND relay
 w1 data       |   4 |   7 | GPIO. 7 |   IN | 0 |  7 || 8  | 0 | IN   | TxD     | 15  | 14  | ?
 GND humidity  |     |     |      0v |      |   |  9 || 10 | 1 | IN   | RxD     | 16  | 15  | ?
--             |  17 |   0 | GPIO. 0 |   IN | 1 | 11 || 12 | 0 | IN   | GPIO. 1 | 1   | 18  |             
+-             |  17 |   0 | GPIO. 0 |   IN | 1 | 11 || 12 | 0 | IN   | GPIO. 1 | 1   | 18  | w1 boiler sensor data            
               |  27 |   2 | GPIO. 2 |   IN | 0 | 13 || 14 |   |      | 0v      |     |     | GND multiplexer
               |  22 |   3 | GPIO. 3 |   IN | 0 | 15 || 16 | 0 | IN   | GPIO. 4 | 4   | 23  | relay bedroom up?
 5V humidity   |     |     |    3.3v |      |   | 17 || 18 | 0 | IN   | GPIO. 5 | 5   | 24  | relay bedroom down?
@@ -45,4 +45,9 @@ relay 6 = living6 up	multiplexer 13
 relay 7 = bedroom down	multiplexer 14
 relay 8 = bedroom up	multiplexer 15
 
+misc relay
+relay 4 = living7 up 	pin 23  
+realy 3 = living7 down 	pin 24
+relay 2 = dhw water	pin 13
+relay 1 = dhw house	pin 19
 

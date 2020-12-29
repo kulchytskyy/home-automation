@@ -1,0 +1,22 @@
+
+*** These modified files were found in JOE when it aborted on Sun Dec 27 19:35:17 2020
+*** JOE was aborted by UNIX signal 15
+
+*** File '(Unnamed)'
+config.sh
+/tmp/crontab.ddCEEg/crontab
+dhw.sh
+/home/pi/.ha_creds
+dhw.sh
+/tmp/crontab.l7oooJ/crontab
+/tmp/crontab.ufuiZi/crontab
+/tmp/crontab.EGqlSB/crontab
+/home/pi/ha/relay/all/down.sh
+run.sh
+gpio.txt
+
+*** File '* Startup Log *'
+Processing '/etc/joe/joerc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/joerc
