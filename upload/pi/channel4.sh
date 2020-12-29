@@ -9,8 +9,8 @@ URL_PARAMS=""
 
 echo $(date) 
 
-H2_HUM=$($DIR/../../temperature/ea2/get_hum.sh 47)
-H2_TEMP=$($DIR/../../temperature/ea2/get_temp.sh 47)
+H2_HUM=$($DIR/../../temperature/ea2/get_hum.sh 20)
+H2_TEMP=$($DIR/../../temperature/ea2/get_temp.sh 20)
 echo "H2_HUM=$H2_HUM"
 if [ ! -z $H2_HUM ]; then
   H2_ABS_HUM=$($DIR/../../humidity/abshum.sh $H2_HUM $H2_TEMP)

@@ -44,7 +44,7 @@ if [ ! -z $TEMP5 ]; then
 fi
 
 TEMP6=$($DIR/../../temperature/w1/get.sh "28-0416812edaff")
-echo "TEMP6=$TEMP5"
+echo "TEMP6=$TEMP6"
 if [ ! -z $TEMP6 ]; then
   URL_PARAMS="$URL_PARAMS&field6=$TEMP6"
 fi
@@ -55,7 +55,7 @@ if [ ! -z $TEMP7 ]; then
   URL_PARAMS="$URL_PARAMS&field7=$TEMP7"
 fi
 
-TEMP8=$($DIR/../../temperature/ea2/get_hum.sh 47)
+TEMP8=$($DIR/../../temperature/ea2/get_hum.sh 20)
 echo "TEMP8=$TEMP8"
 if [ ! -z $TEMP8 ]; then
   URL_PARAMS="$URL_PARAMS&field8=$TEMP8"
