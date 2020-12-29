@@ -7,8 +7,12 @@
       include_vars: "vault.yml"
       tags: ["always"]
   roles:
-    #- common
-    - boiler
+    - common
+    - role: upload
+      vars:
+        channels: []
+    #- boiler
+    
 
   
   

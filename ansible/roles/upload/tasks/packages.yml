@@ -1,0 +1,9 @@
+---
+
+- name: Install python smbus2
+  pip:
+    name: smbus2
+
+- name: Install python RPi.bme280
+  pip:
+    name: RPi.bme280
