@@ -8,6 +8,6 @@ if [ -f $DIR/config.sh ]; then
 fi
 source $DIR/pins.sh
 
-bash $DIR/../run_multiplexer.sh $DOWN_PIN
+bash $DIR/../run.sh $UP_PIN $DOWN_PIN
 
  

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-UP_PIN=10
-DOWN_PIN=9
+UP_PIN=15
+DOWN_PIN=14
 
 export UP_PIN DOWN_PIN
