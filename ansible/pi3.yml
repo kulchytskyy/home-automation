@@ -1,0 +1,19 @@
+---
+
+- hosts: pi3
+  user: pi
+  pre_tasks:
+    - name: include vault vars
+      include_vars: "vault.yml"
+      tags: ["always"]
+  roles:
+    - common
+    - role: upload
+      vars:
+        channels: []
+    #- boiler
+    
+
+  
+  
+  

@@ -79,7 +79,7 @@ function dayofyear2date( $tDay, $tFormat = 'j M' ) {
 
 	<script>
 		var t = {};
-		for (y = 2017; y<=2019; y++){
+		for (y = 2017; y<=2020; y++){
 			t[y]=[];
 		}
 		<?php
@@ -139,6 +139,13 @@ function dayofyear2date( $tDay, $tFormat = 'j M' ) {
 					backgroundColor: '#00FFFF',
 					borderColor: '#00FFFF',
 					data: t[2019],
+					fill: false,
+				}, {
+					label: '2020',
+					fill: false,
+					backgroundColor: '#FF00FF',
+					borderColor: '#FF00FF',
+					data: t[2020],
 					fill: false,
 				}]
 			},
