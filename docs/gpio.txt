@@ -1,13 +1,13 @@
               +-----+-----+---------+------+---+---Pi 3---+---+------+---------+-----+-----+
               | BCM | wPi |   Name  | Mode | V | Physical | V | Mode | Name    | wPi | BCM |
               +-----+-----+---------+------+---+----++----+---+------+---------+-----+-----+
-w1 3.3v       |     |     |    3.3v |      |   |  1 || 2  |   |      | 5v      |     |     | 5v block 1
--             |   2 |   8 |   SDA.1 |   IN | 1 |  3 || 4  |   |      | 5V      |     |     | 5v block 2
--             |   3 |   9 |   SCL.1 |   IN | 1 |  5 || 6  |   |      | 0v      |     |     | GND temp
+w1 3.3v       |     |     |    3.3v |      |   |  1 || 2  |   |      | 5v      |     |     | 5v multiplexer
+-             |   2 |   8 |   SDA.1 |   IN | 1 |  3 || 4  |   |      | 5V      |     |     | 5v relay
+-             |   3 |   9 |   SCL.1 |   IN | 1 |  5 || 6  |   |      | 0v      |     |     | GND relay
 w1 data       |   4 |   7 | GPIO. 7 |   IN | 0 |  7 || 8  | 0 | IN   | TxD     | 15  | 14  | ?
 ? w1 gnd      |     |     |      0v |      |   |  9 || 10 | 1 | IN   | RxD     | 16  | 15  | ?
 kitchen up    |  17 |   0 | GPIO. 0 |   IN | 1 | 11 || 12 | 0 | IN   | GPIO. 1 | 1   | 18  | living2 down
-living1 down  |  27 |   2 | GPIO. 2 |   IN | 0 | 13 || 14 |   |      | 0v      |     |     | GND block 1
+living1 down  |  27 |   2 | GPIO. 2 |   IN | 0 | 13 || 14 |   |      | 0v      |     |     | GND multiplexer
 living4 up    |  22 |   3 | GPIO. 3 |   IN | 0 | 15 || 16 | 0 | IN   | GPIO. 4 | 4   | 23  | living6 down
               |     |     |    3.3v |      |   | 17 || 18 | 0 | IN   | GPIO. 5 | 5   | 24  | living2 up
 bedroom up    |  10 |  12 |    MOSI |   IN | 0 | 19 || 20 |   |      | 0v      |     |     | GND block 2
@@ -20,7 +20,8 @@ bedroom down  |   9 |  13 |    MISO |   IN | 0 | 21 || 22 | 0 | IN   | GPIO. 6 |
 living4 down  |  13 |  23 | GPIO.23 |   IN | 0 | 33 || 34 |   |      | 0v      |     |     |
 living5 down  |  19 |  24 | GPIO.24 |   IN | 0 | 35 || 36 | 0 | IN   | GPIO.27 | 27  | 16  | living3 up 
 living5 up    |  26 |  25 | GPIO.25 |   IN | 0 | 37 || 38 | 0 | IN   | GPIO.28 | 28  | 20  | living6 up
-              |     |     |      0v |      |   | 39 || 40 | 0 | IN   | GPIO.29 | 29  | 21  | living1 up
+              |     |     |      0v |      |   | 39 || 40 | 0 | IN   | GPIO.29 | 29  | 21  |
+multiplexer channel3
               +-----+-----+---------+------+---+----++----+---+------+---------+-----+-----+
               | BCM | wPi |   Name  | Mode | V | Physical | V | Mode | Name    | wPi | BCM |
               +-----+-----+---------+------+---+---Pi 3---+---+------+---------+-----+-----+
@@ -36,11 +37,11 @@ relay 7 = living3 down  12    (GPIO 26)
 relay 8 = living3 up    16    (GPIO 27)
 
 block 2
-relay 1 = living4
-relay 2 = living4
-relay 3 = living5
-relay 4 = living5
-relay 5 = living6
-relay 6 = living6
-relay 7 = bedroom
-relay 8 = bedroom
+relay 1 = living4 down
+relay 2 = living4 up
+relay 3 = living5 down
+relay 4 = living5 up
+relay 5 = living6 down
+relay 6 = living6 up
+relay 7 = bedroom down
+relay 8 = bedroom up
