@@ -8,10 +8,11 @@
       tags: ["always"]
   roles:
     - common
+    - sdr
     - role: upload
       vars:
-        channels: []
-    #- boiler
+        channels: [1,2,4]
+        offset: 2
     
 
   

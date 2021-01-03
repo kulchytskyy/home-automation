@@ -10,6 +10,12 @@
     dest: /etc/systemd/system/rtl433.service
   become: yes
 
+- name: copy rtl rules
+  copy:
+    src: rtl-sdr.rules
+    dest: /etc/udev/rules.d/rtl-sdr.rules
+  become: yes
+
 - name: start rtl service
   systemd: 
     name: rtl433 
