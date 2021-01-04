@@ -27,24 +27,24 @@ done
 ###	emodul
 ###
 
-EMODULE_STATUS=`$DIR/../../emodul/get.sh`
+EMODULE_STATUS=`$DIR/../../boiler/emodul/get.sh`
 echo "EMODULE_STATUS=$EMODULE_STATUS"
 
 if [ "$EMODULE_STATUS" = 'active' ]; then 
 
-	EM_CH_TEMP=`$DIR/../../emodul/parse.sh 1006 sensor`
+	EM_CH_TEMP=`$DIR/../../boiler/emodul/parse.sh 1006 sensor`
 	echo "EM_CH_TEMP=$EM_CH_TEMP"
 	URL_PARAMS="$URL_PARAMS&field4=$EM_CH_TEMP"
 
-	EM_OUTDOOR_TEMP=`$DIR/../../emodul/parse.sh 1009 sensor`
+	EM_OUTDOOR_TEMP=`$DIR/../../boiler/emodul/parse.sh 1009 sensor`
 	echo "EM_OUTDOOR_TEMP=$EM_OUTDOOR_TEMP"
 	URL_PARAMS="$URL_PARAMS&field5=$EM_OUTDOOR_TEMP"
 
-	EM_FAN=`$DIR/../../emodul/parse.sh 1011 fan`
+	EM_FAN=`$DIR/../../boiler/emodul/parse.sh 1011 fan`
 	echo "EM_FAN=$EM_FAN"
 	URL_PARAMS="$URL_PARAMS&field6=$EM_FAN"
 
-	EM_DHW_TEMP=`$DIR/../../emodul/parse.sh 1007 sensor`
+	EM_DHW_TEMP=`$DIR/../../boiler/emodul/parse.sh 1007 sensor`
 	echo "EM_DHW_TEMP=$EM_DHW_TEMP"
 	URL_PARAMS="$URL_PARAMS&field7=$EM_DHW_TEMP"
 fi
