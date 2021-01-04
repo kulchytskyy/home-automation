@@ -9,8 +9,8 @@ URL_PARAMS=""
 
 echo $(date) 
 
-H2_HUM=$($DIR/../../temperature/ea2/get_hum.sh 20)
-H2_TEMP=$($DIR/../../temperature/ea2/get_temp.sh 20)
+H2_HUM=$($DIR/../../temperature/sdr/get_hum.sh 20)
+H2_TEMP=$($DIR/../../temperature/sdr/get_temp.sh 20)
 echo "H2_HUM=$H2_HUM"
 if [ ! -z $H2_HUM ]; then
   H2_ABS_HUM=$($DIR/../../humidity/abshum.sh $H2_HUM $H2_TEMP)
@@ -20,8 +20,8 @@ if [ ! -z $H2_HUM ]; then
   
 fi
 
-H3_HUM=$($DIR/../../temperature/ea2/get_hum.sh 144)
-H3_TEMP=$($DIR/../../temperature/ea2/get_temp.sh 144)
+H3_HUM=$($DIR/../../temperature/sdr/get_hum.sh 144)
+H3_TEMP=$($DIR/../../temperature/sdr/get_temp.sh 144)
 echo "H3_HUM=$H3_HUM"
 if [ ! -z $H3_HUM ]; then
   H3_ABS_HUM=$($DIR/../../humidity/abshum.sh $H3_HUM $H3_TEMP)

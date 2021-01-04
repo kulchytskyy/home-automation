@@ -2,7 +2,7 @@
 
 - name: create data directory
   file:
-    path: /var/ha/rtl/
+    path: /var/ha/sdr/
     state: directory
     owner: pi
   become: yes

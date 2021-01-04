@@ -14,7 +14,7 @@ echo $(date)
 ### ea2
 ###
 for i in 15 14 31; do
-   EA2T=`$DIR/../../temperature/ea2/get_temp.sh $i`
+   EA2T=`$DIR/../../temperature/sdr/get_temp.sh $i`
    echo "EA2T$i=$EA2T"
    if [ ! -z $EA2T ]; then
       URL_PARAMS="$URL_PARAMS&field$FIELD_NUM=$EA2T"

@@ -3,7 +3,7 @@
 # arg1 - channel id
 # arg2 - value column index (8 - temperature, 9 - huminity)
 
-F=/var/ha/rtl/temp.csv
+F=/var/ha/sdr/temp.csv
 MODEL="TFA\-[\w]+"
 
 LAST_LINE=`grep -aP "$MODEL\,$1", $F | tail -n 1`

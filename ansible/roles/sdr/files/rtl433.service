@@ -4,8 +4,8 @@ After = network.target
 
 [Service]
 ExecStart = /home/pi/home-automation/temperature/ea2/daemon.sh
-StandardOutput=append:/var/ha/rtl/temp.csv
-StandardError=append:/var/log/ha/ea2.log
+StandardOutput=append:/var/ha/sdr/temp.csv
+StandardError=append:/var/log/ha/sdr.log
 WorkingDirectory=/var/ha/rtl/
 User=pi
 Restart=on-always
