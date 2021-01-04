@@ -1,16 +1,20 @@
 ---
 
+- name: check git cloned
+  stat:
+    path: ~/ha
+  register: ha
+
 - name: checkout repo
   git:
     repo: https://github.com/kulchytskyy/home-automation.git
     dest: ~/home-automation
+  when: not ha.stat.exists
 
 - name: create a symbolic link
   file:
     src: ~/home-automation
     dest: ~/ha
-    state: link        
+    state: link
+  when: not ha.stat.exists
 
-   
-        
-    

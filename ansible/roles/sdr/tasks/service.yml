@@ -1,8 +1,14 @@
 ---
 
+- name: check rtl_433 installed
+  stat:
+    path: /etc/modprobe.d/blacklist-dvb_usb_rtl28xxu.conf
+  register: blacklist_file
+
 - name: blacklist dvb_usb_rtl28xxu
   shell: echo 'blacklist dvb_usb_rtl28xxu' | tee --append /etc/modprobe.d/blacklist-dvb_usb_rtl28xxu.conf
   become: yes
+  when: not blacklist_file.stat.exists
 
 - name: copy service file
   copy:

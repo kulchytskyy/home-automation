@@ -3,10 +3,10 @@ Description = RTL 433 listening service
 After = network.target
 
 [Service]
-ExecStart = /home/pi/home-automation/temperature/ea2/daemon.sh
+ExecStart = /home/pi/home-automation/temperature/sdr/daemon.sh
 StandardOutput=append:/var/ha/sdr/temp.csv
 StandardError=append:/var/log/ha/sdr.log
-WorkingDirectory=/var/ha/rtl/
+WorkingDirectory=/var/ha/sdr/
 User=pi
 Restart=on-always
 RestartSec=30s
