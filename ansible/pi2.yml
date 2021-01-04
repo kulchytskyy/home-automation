@@ -15,7 +15,5 @@
         offset: 0
     - load2db
     - charts
-
-  
-  
+    - boiler
   

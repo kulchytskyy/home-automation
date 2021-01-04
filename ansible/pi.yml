@@ -4,10 +4,5 @@
   user: pi
   roles:
   - common
-  - sdr
-  - role: upload
-    vars: 
-      channels: [1,2,4]
-      offset: 2
   
   
