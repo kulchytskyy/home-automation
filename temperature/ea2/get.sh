@@ -4,9 +4,9 @@
 # arg2 - value column index (8 - temperature, 9 - huminity)
 
 F=/var/ha/rtl/temp.csv
-MODEL="TFA-TwinPlus"
+MODEL="TFA\-[\w]+"
 
-LAST_LINE=`grep -a $MODEL,$1, $F | tail -n 1`
+LAST_LINE=`grep -aP "$MODEL\,$1", $F | tail -n 1`
 #echo $LAST_LINE
 
 TEMP=`echo $LAST_LINE | cut -d , -f $2`
