@@ -5,5 +5,5 @@ shutters:
     hour: 7
     min: 0
   down:
-    hour: 22
+    hour: 19
     min: 0
