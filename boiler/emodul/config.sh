@@ -3,7 +3,7 @@ DIR=$(dirname $0)
 CURL="curl"
 JQ="jq"
 
-source $DIR/../../.ha_creds
+source ~/.ha_creds
 
 API_URL="https://emodul.pl"
 COOKIE_STORAGE="--cookie cookies.txt --cookie-jar cookies.txt"
