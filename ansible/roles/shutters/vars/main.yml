@@ -2,7 +2,7 @@
 
 shutters:
   up:
-    hour: 7
+    hour: 8
     min: 0
   down:
     hour: 19

@@ -9,7 +9,9 @@ StandardError=append:/var/log/ha/sdr.log
 WorkingDirectory=/var/ha/sdr/
 User=pi
 Restart=on-always
-RestartSec=30s
+RestartSec=120
+StartLimitBurst=20
+StartLimitIntervalSec=2400
 
 [Install]
 WantedBy = multi-user.target

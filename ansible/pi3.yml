@@ -11,7 +11,7 @@
     - sdr
     - role: upload
       vars:
-        channels: [1,2,4]
+        channels: [1,2,3,4]
         offset: 2
     
 
