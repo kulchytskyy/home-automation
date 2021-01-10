@@ -82,7 +82,7 @@ function dayofyear2date( $tDay, $tFormat = 'j M' ) {
 
 	<script>
 		var t = {};
-		for (y = 2017; y<=2020; y++){
+		for (y = 2017; y<=2021; y++){
 			t[y]=[];
 		}
 		<?php
@@ -93,7 +93,8 @@ function dayofyear2date( $tDay, $tFormat = 'j M' ) {
 					order by year, month";
 			$result = $conn->query($sql);
 			while($row = $result->fetch_assoc()) {
-				echo "t[" . $row["year"] . "][" . $row["month"] . "-1] = " . $row["temp"] . ";";
+				$m = $row["month"] - 1;
+				echo "t[" . $row["year"] . "][" . $m  . "] = " . $row["temp"] . ";";
 			}
 		?> 
 		console.log(t);
@@ -110,7 +111,7 @@ function dayofyear2date( $tDay, $tFormat = 'j M' ) {
 		?>
 			<?php
 				echo "var labels = [];";
-				for ($i = 1; $i < 365; $i++) {
+				for ($i = 0; $i < 365; $i++) {
 					echo "labels.push(";
 					echo "'" . dayofyear2date($i) . "'";
 					echo ");";
@@ -150,7 +151,15 @@ function dayofyear2date( $tDay, $tFormat = 'j M' ) {
 					borderColor: '#FF00FF',
 					data: t[2020],
 					fill: false,
-				}]
+				}, {
+					label: '2021',
+					fill: false,
+					backgroundColor: '#FFFF00',
+					borderColor: '#FFFF00',
+					data: t[2021],
+					fill: false,
+				}
+				]
 			},
 			options: {
 				responsive: true,
