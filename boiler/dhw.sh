@@ -8,7 +8,7 @@ CH_TEMP_MIN=63
 DIR=$(dirname $0)
 
 echo
-echo "`date -u`"
+echo "`date`"
 
 STATUS="$($DIR/emodul/status.sh)"
 #echo "$STATUS"
@@ -37,12 +37,14 @@ if [ "$CONTROLLER_STATUS" = '"active"' ] && [ "$MODULE_STATUS" = '"active"' ] &&
 
 	if [[ -z $DHW_TEMP ]]; then
 		echo "Failed to get DHW temperature"
+		notify --text "Failed to get DHW temperature"
 		exit 1
 	fi
         
 	if (( $(echo "$DHW_TEMP > $DHW_MAX_TEMP" | bc -l) )); then
 		if [[ `cat /var/ha/boiler/dhw` == "WATER" ]]; then
         		echo "Reached DHW max temperature $DHW_MAX_TEMP. Switching to HOUSE heating."
+        		notify --text "Reached DHW max temperature $DHW_MAX_TEMP. Switching to HOUSE heating."
 	       		bash $DIR/relay/house.sh
 	       	else
 	       		echo "Already switched to house heating."
@@ -53,6 +55,7 @@ if [ "$CONTROLLER_STATUS" = '"active"' ] && [ "$MODULE_STATUS" = '"active"' ] &&
 	        	echo "Fan is $FAN (required <$FAN_MAX). CH temp is $CH_TEMP (required >$CH_TEMP_MIN)."
 	        	if (( $(echo "$FAN < $FAN_MAX" | bc -l) )) && (( $(echo "$CH_TEMP > $CH_TEMP_MIN" | bc -l) )); then
 	        		echo "Switching to WATER heating."
+	        		notify --text "Switching to WATER heating."
 			       	bash $DIR/relay/water.sh
 			else
 				echo "Cannot switch to water heating."
@@ -71,6 +74,7 @@ else
 	echo "Boiler is not active"
 	if [[ `cat /var/ha/boiler/dhw` == "WATER" ]]; then
         	echo "Disabling WATER heating."
+        	notify --text "Boiler is not active. Disabling WATER heating."
 	       	bash $DIR/relay/house.sh
        	fi
 fi
