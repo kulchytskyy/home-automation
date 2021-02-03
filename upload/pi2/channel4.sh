@@ -12,7 +12,7 @@ echo $(date)
 ###
 ### bme280
 ###
-H1_DATA=$($DIR/../../humidity/bme280/get.py 76)
+H1_DATA=$($DIR/../../sensor/get.sh hum_basement)
 echo "H1_DATA=$H1_DATA"
 if [ ! -z $H1_DATA ]; then
 

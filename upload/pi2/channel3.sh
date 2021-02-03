@@ -12,19 +12,19 @@ echo $(date)
 ###
 ### w1
 ###
-TEMP1=$($DIR/../../temperature/w1/get.sh "28-0316819430ff")
+TEMP1=$($DIR/../../sensor/get.sh basement_laundry)
 echo "TEMP1=$TEMP1"
 if [ ! -z $TEMP1 ]; then
    URL_PARAMS="$URL_PARAMS&field1=$TEMP1"
 fi
 
-TEMP2=$($DIR/../../temperature/w1/get.sh "28-0000052cf9c6")
+TEMP2=$($DIR/../../sensor/get.sh basement_large)
 echo "TEMP2=$TEMP2"
 if [ ! -z $TEMP2 ]; then
    URL_PARAMS="$URL_PARAMS&field2=$TEMP2"
 fi
 
-TEMP3=$($DIR/../../temperature/w1/get.sh "28-0416816c14ff")
+TEMP3=$($DIR/../../sensor/get.sh basement_boiler)
 echo "TEMP3=$TEMP3"
 if [ ! -z $TEMP3 ]; then
    URL_PARAMS="$URL_PARAMS&field3=$TEMP3"
