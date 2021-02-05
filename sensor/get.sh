@@ -7,6 +7,70 @@ name=$1;
 #echo "quering sensor: $name"
 
 case "$1" in
+
+
+    #pi3
+    attic)
+            echo $($DIR/../temperature/w1/get.sh "28-03168123a0ff");
+    ;;
+    kidroom)
+            echo $($DIR/../temperature/w1/get.sh "28-0316811ffaff");
+    ;;
+    bathroom2)
+            echo $($DIR/../temperature/w1/get.sh "28-0416810106ff");
+    ;;
+    bedroom)
+            echo $($DIR/../temperature/w1/get.sh "28-0416812edaff");
+    ;;
+    kidroom2)
+            echo $($DIR/../temperature/w1/get.sh "28-0516848757ff");
+    ;;
+    floor1)
+            echo $($DIR/../temperature/w1/get.sh "28-3c01b556458b");
+    ;;
+    floor2)
+            echo $($DIR/../temperature/w1/get.sh "28-3c01b55639bf");
+    ;;
+    hum_living)
+            echo $($DIR/../temperature/sdr/get.sh 20);
+    ;;
+    hum_outdoor)
+            echo $($DIR/../temperature/sdr/get.sh 171);
+    ;;
+    hum_floor1)
+            echo $($DIR/../humidity/bme280/get.py 77);
+    ;;
+    hum_floor2)
+            echo $($DIR/../humidity/bme280/get.py 76);
+    ;;
+
+    #boiler
+    boiler_ch_temp)
+            echo $($DIR/../boiler/emodul/parse.sh 1006 sensor);
+    ;;
+    boiler_outdoor_temp)
+            echo $($DIR/../boiler/emodul/parse.sh 1009 sensor);
+    ;;
+    boiler_fan)
+            echo $($DIR/../boiler/emodul/parse.sh 1011 fan);
+    ;;
+    boiler_dhw)
+            echo $($DIR/../boiler/emodul/parse.sh 1007 sensor);
+    ;;
+
+    #sdr
+    livingroom)
+            echo $($DIR/../temperature/sdr/get_temp.sh 15);
+    ;;
+    bathroom)
+            echo $($DIR/../temperature/sdr/get_temp.sh 14);
+    ;;
+    outdoor)
+            echo $($DIR/../temperature/sdr/get_temp.sh 58);
+    ;;
+
+
+    #pi2
     basement_laundry)
             echo $($DIR/../temperature/w1/get.sh "28-0316819430ff");
     ;;
