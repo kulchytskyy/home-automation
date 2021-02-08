@@ -26,6 +26,7 @@ else
 	
 	echo "`date`|$type|$message" >> $HISTORY
 
-	notify --text "$message"
+	#notify --text "$message"
+	echo "" | mail -s "$message" "kulchytskyy@gmail.com"
 fi
 
