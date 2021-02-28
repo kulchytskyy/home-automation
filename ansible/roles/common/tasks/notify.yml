@@ -1,0 +1,24 @@
+---
+- name: check notify installed
+  stat:
+    path: /usr/local/bin/notify
+  register: notify_binary
+
+- name: Install notify node.js module
+  become: yes
+  npm:
+    name: notify-cli
+    path: ~/bin/
+    global: yes
+  when: not notify_binary.stat.exists
+
+- name: register notify
+  command: "notify -r {{notify.key}}"
+  when: not notify_binary.stat.exists
+
+- name: create notify directory
+  file:
+    path: /var/ha/notify
+    state: directory
+    owner: pi
+  become: yes

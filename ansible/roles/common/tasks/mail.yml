@@ -1,0 +1,16 @@
+---
+
+- name: install packages
+  become: yes
+  package:
+    name: 
+      - msmtp 
+      - msmtp-mta
+    state: present
+    update_cache: yes
+
+- name: copy mail config
+  template:
+    src: files/msmtprc
+    dest: /etc/msmtprc
+  become: yes

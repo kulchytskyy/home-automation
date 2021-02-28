@@ -7,4 +7,9 @@
     job: "~/ha/upload/{{ansible_hostname}}/channel{{item}}.sh >>/var/log/ha/upload{{item}}.log 2>&1"
   loop: "{{channels}}"
          
+- name: "install cron task: monitoring"
+  cron:
+    name: "monitor"
+    minute: "*/5"
+    job: "~/ha/monitor/monitor_{{ansible_hostname}}.sh >>/var/log/ha/monitor.log 2>&1"
   

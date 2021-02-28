@@ -1,0 +1,10 @@
+
+---
+
+notify:
+  key: "rHWfGXQxc"
+  
+mail:
+  user:
+    name: "kulchytskyy.pi"
+    password: "{{ vault_mail_password }}"
