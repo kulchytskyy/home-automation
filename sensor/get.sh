@@ -81,10 +81,10 @@ case "$1" in
             echo $($DIR/../temperature/w1/get.sh "28-0416816c14ff");
     ;;
     dhw|dhw_top)
-            echo $($DIR/../temperature/w1/get.sh "28-3c01b556867f");
+            echo $($DIR/../temperature/w1/get_abs.sh "28-3c01b556867f");
     ;;
     dhw_center)
-            echo $($DIR/../temperature/w1/get.sh "28-021319cc85aa");
+            echo $($DIR/../temperature/w1/get_abs.sh "28-021319cc85aa");
     ;;
     hum_basement)
             echo $($DIR/../humidity/bme280/get.py 76);
