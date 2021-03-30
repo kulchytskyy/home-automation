@@ -7,7 +7,7 @@ echo "`date -u`"
 
 if [[ `cat /var/ha/boiler/dhw` == "WATER" ]]; then
         echo "DHW heating active. Switching off."
-        exec $DIR/../boiler/relay/house.sh
+        $DIR/../relay/house.sh
 fi
 
 LOGIN_CMD="$CURL $API_URL/login $COMMON_HEADER --data-binary '$LOGIN_PAYLOAD' > $LOGIN_DATA_FILE"

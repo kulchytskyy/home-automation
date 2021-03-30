@@ -5,5 +5,4 @@ source $DIR/config.sh
 
 echo "`date`"
 echo "Starting boiler"
-exec $DIR/emodul/start.sh
- 
+$DIR/emodul/start.sh

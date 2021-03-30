@@ -46,7 +46,7 @@ then
 	if [ "$CONTROLLER_STATUS" = '"active"' ] && [ "$MODULE_STATUS" = '"active"' ] && [ "$BOILER_STATUS" = 'pid operation' ]; then
         	echo "Boiler is active. Stopping.."
         	$DIR/../../monitor/notify.sh "" "Switching off boiler because of sunny day"
-		exec $DIR/../stop.sh
+		$DIR/../stop.sh
 	else
 		echo "Boiler is not active"
         fi

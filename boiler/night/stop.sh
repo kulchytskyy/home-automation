@@ -5,8 +5,8 @@ DIR=$(dirname $0)
 OUTDOOR_MIN_TEMP=-2
 INDOOR_MIN_TEMP=20
 
-source $DIR/config.sh
-source $DIR/func.sh
+source $DIR/../config.sh
+source $DIR/../func.sh
 
 echo ""
 echo "`date`"
@@ -21,7 +21,7 @@ echo "outdoor temparature=$OUTDOOR, indoor temperature=$INDOOR"
 
 if (( $(echo "$OUTDOOR > $OUTDOOR_MIN_TEMP" | bc -l) )) && (( $(echo "$INDOOR > $INDOOR_MIN_TEMP" | bc -l) )); then
 	echo "switching off boiler"
-	exec $DIR/emodul/stop.sh
+	$DIR/../stop.sh
 else
 	echo "continue heating"
 fi 
