@@ -6,7 +6,7 @@
     name: 
       - apache2
       - php
-      - mariadb-server
+      #- mariadb-server
       - php-mysql
       - python3-pymysql
     state: present

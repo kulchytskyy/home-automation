@@ -13,10 +13,10 @@
     owner: pi
   become: yes  
 
-- name: copy charts www files
-  copy:
-    src: charts/
-    dest: /var/www/html/ha/charts/
+#- name: copy charts www files
+#  copy:
+#    src: charts/
+#    dest: /var/www/html/ha/charts/
 
 - name: include db vars
   include_vars:
