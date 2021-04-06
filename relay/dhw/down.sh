@@ -19,6 +19,6 @@ fi
 
 echo "HOUSE" > /var/ha/boiler/dhw
 
-bash $DIR/../run.sh $DOWN_PIN $UP_PIN
+exec $DIR/../run.sh $DOWN_PIN $UP_PIN
 
  

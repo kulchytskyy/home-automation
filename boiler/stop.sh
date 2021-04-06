@@ -5,5 +5,5 @@ source $DIR/config.sh
 
 echo "`date`"
 echo "Stopping boiler"
-exec $DIR/emodul/stop.sh
- 
+$DIR/emodul/stop.sh
+
