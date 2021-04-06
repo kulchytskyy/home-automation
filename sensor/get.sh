@@ -35,7 +35,7 @@ case "$1" in
             echo $($DIR/../temperature/sdr/get.sh 20);
     ;;
     hum_outdoor)
-            echo $($DIR/../temperature/sdr/get.sh 171);
+            echo $($DIR/../temperature/sdr/get.sh 169);
     ;;
     hum_floor1)
             echo $($DIR/../humidity/bme280/get.py 77);
@@ -60,7 +60,7 @@ case "$1" in
 
     #sdr
     livingroom)
-            echo $($DIR/../temperature/sdr/get_temp.sh 15);
+            echo $($DIR/../temperature/sdr/get_temp.sh 55);
     ;;
     bathroom)
             echo $($DIR/../temperature/sdr/get_temp.sh 14);
