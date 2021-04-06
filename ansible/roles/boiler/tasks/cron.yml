@@ -1,9 +1,29 @@
 ---
 
-- name: "install cron task: boiler"
+- name: "boiler dhw monitor"
   cron:
     name: "boiler dhw monitor"
-    minute: "*/2"
+    minute: "*/5"
     job: "~/ha/boiler/dhw.sh >>/var/log/ha/dhw_monitor.log 2>&1"
+
+- name: "boiler night stop"
+  cron:
+    name: "boiler night stop"
+    hour: 1
+    minute: 0
+    job: "~/ha/boiler/night/stop.sh >>/var/log/ha/boiler.log 2>&1"
          
+- name: "boiler night start"
+  cron:
+    name: "boiler night start"
+    hour: 5
+    minute: 30
+    job: "~/ha/boiler/night/start.sh >>/var/log/ha/boiler.log 2>&1"
+
+- name: "boiler sunny stop"
+  cron:
+    name: "boiler sunny stop"
+    hour: 9-15
+    minute: "*/15"
+    job: "~/ha/boiler/sunny/stop.sh >>/var/log/ha/boiler.log 2>&1"
   

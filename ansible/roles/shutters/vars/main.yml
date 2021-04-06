@@ -2,8 +2,8 @@
 
 shutters:
   up:
-    hour: 8
+    hour: 7
     min: 0
   down:
-    hour: 18
+    hour: 21
     min: 0

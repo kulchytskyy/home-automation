@@ -11,7 +11,7 @@ echo $(date)
 
 
 N=3
-for i in attic kidroom bathroom2 bedroom kidroom2 hum_living; do
+for i in attic kidroom bathroom2 bedroom kidroom2; do
    T=`$DIR/../../sensor/get.sh $i`
    echo "$i=$T"
    if [ ! -z $T ]; then
@@ -19,6 +19,15 @@ for i in attic kidroom bathroom2 bedroom kidroom2 hum_living; do
    fi
    N=$(($N+1))
 done
+
+D=`$DIR/../../sensor/get.sh hum_living`
+if [ ! -z $T ]; then
+   D_ARR=(${D//|/ })
+   T=${D_ARR[1]}
+   echo "hum_living=$T"
+   URL_PARAMS="$URL_PARAMS&field$N=$T"
+fi
+N=$(($N+1))
 
 ### send
 echo "url_params=$URL_PARAMS"
