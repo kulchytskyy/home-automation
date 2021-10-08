@@ -1,6 +1,8 @@
 <?php
 
-$config = parse_ini_file(__DIR__ . '/../../../ha_config.ini', true); 
+//$config = parse_ini_file(__DIR__ . '/../../../ha_config.ini', true); 
+$config = parse_ini_file('/var/www/ha_config.ini', true); 
+
 
 $servername = $config['database']['host'];
 $username = $config['database']['user'];
@@ -8,6 +10,7 @@ $password = $config['database']['password'];
 $dbname = $config['database']['database'];
 
 $conn = new mysqli($servername, $username, $password, $dbname);
+//$conn = new mysqli('localhost', 'ha', 'mysql123', 'ha');
 if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
@@ -87,7 +90,7 @@ function dayofyear2date( $tDay, $tFormat = 'j M' ) {
 		}
 		<?php
 			$sql = "select year(`date`) as year, " . $group_by . "(`date`) as month, avg(temperature) as temp
-					from temperatures
+					from daily_average
 					where sensor_id=" . $sensor_id . "
 					group by year(`date`), " . $group_by . "(`date`)
 					order by year, month";
