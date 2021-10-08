@@ -44,7 +44,7 @@ async function import_month (connection, sensor, year, month) {
     console.log('========== month=', month, year);
     var currDate = moment();
     var date = moment({ year:year, month:month-1});
-    for (var day=1; day<=date.daysInMonth(); day++){
+    for (var day=1; day<=date.daysInMonth(); day++){	
         if (day > currDate.date() && currDate.month() == month-1 && currDate.year() == year){
             console.log("Stopped on current date");
             break;
@@ -86,10 +86,26 @@ async function import_day(connection, sensor, year, month, day){
         );
 
         if (data.length){
-            return insert(connection, data).then(console.log).catch(console.error);;
+            var sum = null, cnt = 0;
+            data.forEach(function (d, index){
+                var t = parseFloat(d[1]);
+                if (t){
+                    //console.log(t);
+                    cnt++;
+                    sum += t;
+                }
+                else{
+                    //console.log('empty value');
+                }
+            });
+            var avg = sum/cnt;
+            //console.log('sum='+sum+' cnt='+cnt+' avg='+avg);
+            var avg_data = [[start, avg, sensor.id]];
+            console.log('avg_data', avg_data);
+            return insert_avg(connection, avg_data).then(console.log).catch(console.error);;
         }
         else{
-            return "no valid data";
+            return "invalid data";
         }
     }
     else{
@@ -97,6 +113,15 @@ async function import_day(connection, sensor, year, month, day){
     }
 }
 exports.import_day = import_day;
+
+async function insert_avg(connection, data) {
+    const sql = "INSERT INTO daily_average (`date`, temperature, sensor_id) VALUES ?";
+    //console.log('insert_avg', sql);
+    //console.log(data);
+    return await connection.query(sql, [data]);
+}
+exports.insert_avg = insert_avg;
+
 
 async function insert(connection, data) {
     const sql_temperature_insert = "INSERT INTO temperatures (`date`, temperature, sensor_id) VALUES ?";
