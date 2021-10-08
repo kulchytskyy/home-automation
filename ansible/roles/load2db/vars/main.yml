@@ -2,7 +2,8 @@
 
 dbpass: "root"
 db:
-  name: "ha"
+  host: "sql11.freemysqlhosting.net"
+  name: "sql11403519"
   user:
-    name: "pi"
+    name: "sql11403519"
     password: "{{ vault_db_password }}"
