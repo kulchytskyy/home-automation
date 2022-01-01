@@ -38,9 +38,9 @@ var start_year = 2017;
 			return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		}
 		
-		function config(title, data){
+		function config(title, data, chart_type){
   		   return {
-			type: 'bar',
+			type: chart_type,
 			data: {
 				labels: labels,
 				datasets: datasets(data)

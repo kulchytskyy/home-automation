@@ -16,6 +16,13 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
+if (isset($_GET["chart_type"])){
+        $chart_type = $_GET["chart_type"];
+}
+else{
+        $chart_type = 'line';
+}
+
 ?> 
 
 <!doctype html>
@@ -29,6 +36,13 @@ if ($conn->connect_error) {
 
 <body>
 
+	<form action="#">
+                chart type :
+                <select name="chart_type" onchange="this.form.submit()">
+                        <option value="line" <?php if ( $chart_type == 'line') { echo "selected"; } ?> >line</option>
+                        <option value="bar" <?php if ( $chart_type == 'bar') { echo "selected"; } ?>>bar</option>
+                </select>
+	 </form>
 
 	<script>
  		var t = prepare_data_arr();
@@ -58,8 +72,9 @@ if ($conn->connect_error) {
                         return ['October', 'November', 'December','January', 'February', 'March', 'April'];
                 }
 
+                var chart_type = '<?php echo $chart_type ?>';
 		var labels = labels();
-		var config = config('Pellets burn', t);
+		var config = config('Pellets burn', t, chart_type);
 
 		window.onload = function() {
 			var ctx = document.getElementById('canvas').getContext('2d');

@@ -29,6 +29,12 @@ if (isset($_GET["sensor_id"])){
 else{
 	$sensor_id = 9;
 }
+if (isset($_GET["chart_type"])){
+	$chart_type = $_GET["chart_type"];
+}
+else{
+	$chart_type = 'line';
+}
 
 
 function dayofyear2date( $tDay, $tFormat = 'j M' ) {
@@ -82,6 +88,11 @@ function dayofyear2date( $tDay, $tFormat = 'j M' ) {
 			<option value="MONTH" <?php if ( $group_by == 'MONTH') { echo "selected"; } ?> >month</option>
 			<option value="DAYOFYEAR" <?php if ( $group_by == 'DAYOFYEAR') { echo "selected"; } ?>>day of year</option>
 		</select>
+		chart type :
+		<select name="chart_type" onchange="this.form.submit()">
+			<option value="line" <?php if ( $chart_type == 'line') { echo "selected"; } ?> >line</option>
+			<option value="bar" <?php if ( $chart_type == 'bar') { echo "selected"; } ?>>bar</option>
+		</select>
 	</form>
 
 	<script>
@@ -122,7 +133,8 @@ function dayofyear2date( $tDay, $tFormat = 'j M' ) {
 		<?php
 		}
 		?>
-                var config = config('Pellets burn', t);
+		var chart_type = '<?php echo $chart_type ?>';
+                var config = config('Pellets burn', t, chart_type);
 
 		window.onload = function() {
 			var ctx = document.getElementById('canvas').getContext('2d');
