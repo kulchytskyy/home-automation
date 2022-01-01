@@ -1,3 +1,4 @@
+<?php include 'header.php';?>
 <?php
 
 //$config = parse_ini_file(__DIR__ . '/../../../ha_config.ini', true); 
@@ -130,7 +131,7 @@ function dayofyear2date( $tDay, $tFormat = 'j M' ) {
 
 	</script>
 
-	<div style="width:75%;">
+	<div>
 		<canvas id="canvas"></canvas>
 	</div>
 	<br>
@@ -139,3 +140,4 @@ function dayofyear2date( $tDay, $tFormat = 'j M' ) {
 </body>
 
 </html>
+<?php include 'footer.php';?>

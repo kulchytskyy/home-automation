@@ -1,3 +1,4 @@
+<?php include 'header.php';?>
 <?php
 
 //$config = parse_ini_file(__DIR__ . '/../../../ha_config.ini', true); 
@@ -24,35 +25,39 @@ if ($conn->connect_error) {
 	<title>Line Chart</title>
 	<script src="js/Chart.bundle.js"></script>
 	<script src="js/func.js"></script>
-	<style>
-	canvas{
-		-moz-user-select: none;
-		-webkit-user-select: none;
-		-ms-user-select: none;
-	}
-	</style>
 </head>
 
 <body>
 
 
 	<script>
-		var t = prepare_data_arr();
+ 		var t = prepare_data_arr();
 		<?php
-			$sql = "select year(`date`) as year, month(`date`) as month, sum(bags) as cnt
-					from pellets
-					group by year(`date`), month(`date`)
-					order by year, month";
+			$sql = "
+				select 	 
+					case when month(`date`)>=10 then month(`date`)-10 else month(`date`)+2 end as m,
+					case when month(`date`)>=10 then year(`date`) else year(`date`)-1 end as y,
+					sum(bags) as cnt
+				from pellets
+				group by 
+					case when month(`date`)>=10 then month(`date`)-10 else month(`date`)+2 end,
+					case when month(`date`)>=10 then year(`date`) else year(`date`)-1 end
+				order by y, m
+			";
 			$result = $conn->query($sql);
 			while($row = $result->fetch_assoc()) {
-				$m = $row["month"] - 1;
-				echo "t[" . $row["year"] . "][" . $m  . "] = " . $row["cnt"] . ";";
+				$m = $row["m"];
+				echo "t[" . $row["y"] . "][" . $m  . "] = " . $row["cnt"] . ";\n";
 			}
 		?> 
 		console.log(t);
 	</script>
 
 	<script>
+                function labels(){
+                        return ['October', 'November', 'December','January', 'February', 'March', 'April'];
+                }
+
 		var labels = labels();
 		var config = config('Pellets burn', t);
 
@@ -63,7 +68,7 @@ if ($conn->connect_error) {
 
 	</script>
 
-	<div style="width:75%;">
+	<div>
 		<canvas id="canvas"></canvas>
 	</div>
 	<br>
@@ -72,3 +77,4 @@ if ($conn->connect_error) {
 </body>
 
 </html>
+<?php include 'footer.php';?>

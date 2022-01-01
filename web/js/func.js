@@ -11,8 +11,9 @@ var start_year = 2017;
 		function color(year){
 			var list = ['red', 'green', 'blue', 'yellow', 'fuchsia', 'purple', 'olive', 'navy', 'maroon', 'lime'];
 			var curr_year = new Date().getFullYear();
-			console.log(curr_year);
+			console.log(year);
 			var i = curr_year - year;
+			console.log('color', i);
 			return list[i];
 		}
 		function dataset(data, year){
@@ -39,7 +40,7 @@ var start_year = 2017;
 		
 		function config(title, data){
   		   return {
-			type: 'line',
+			type: 'bar',
 			data: {
 				labels: labels,
 				datasets: datasets(data)
