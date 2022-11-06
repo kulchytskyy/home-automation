@@ -86,6 +86,9 @@ case "$1" in
     dhw_center)
             echo $($DIR/../temperature/w1/get_abs.sh "28-021319cc85aa");
     ;;
+    boiler2_ch_temp)
+            echo $($DIR/../temperature/w1/get_abs.sh "28-021319dd9aaa");
+    ;;
     hum_basement)
             echo $($DIR/../humidity/bme280/get.py 76);
     ;;
