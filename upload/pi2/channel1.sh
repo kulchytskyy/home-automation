@@ -12,6 +12,13 @@ echo $(date)
 ###
 ### w1
 ###
+
+BOILER2_CH_TEMP=$($DIR/../../sensor/get.sh boiler2_ch_temp)
+echo "BOILER2_CH_TEMP=$BOILER2_CH_TEMP"
+if [ ! -z $BOILER2_CH_TEMP ]; then
+   URL_PARAMS="$URL_PARAMS&field2=$BOILER2_CH_TEMP"
+fi
+
 DHW_CENTER=$($DIR/../../sensor/get.sh dhw_center)
 echo "DHW_CENTER=$DHW_CENTER"
 if [ ! -z $DHW_CENTER ]; then
