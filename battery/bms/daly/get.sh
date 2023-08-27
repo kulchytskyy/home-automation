@@ -16,7 +16,10 @@ SOC_OUTPUT=`$BMS_CLI  -d $DEVICE --soc`
 case "$1" in
 
     voltage)
-        echo $SOC_OUTPUT | jq ".total_voltage"
+    	v=`echo $SOC_OUTPUT | jq ".total_voltage"`
+	if (( $(echo "$v < 100" | bc -l) )) && (( $(echo "$v > 0" | bc -l) )); then
+		echo $v
+	fi
     ;;
 
     current)
@@ -48,7 +51,7 @@ case "$1" in
 	#echo $l
 	d=`echo "($h-$l)*1000" | bc`
 	
-	if (( $(echo "$d < 100000" | bc -l) )) && (( $(echo "$d > 0" | bc -l) )); then
+	if (( $(echo "$d < 1000" | bc -l) )) && (( $(echo "$d > 0" | bc -l) )); then
         	echo $d
 	fi
     ;;
