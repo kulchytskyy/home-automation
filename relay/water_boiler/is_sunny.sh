@@ -15,7 +15,7 @@ DATA=`wget -q -O- $URL`
 
 #echo "TEST="
 CLOUDCOVER=`echo $DATA | jq ".current.cloudcover"`
-echo "`date -u` Cloud cover $CLOUDCOVER" >> $LOGFILE
+echo "`date` Cloud cover $CLOUDCOVER" >> $LOGFILE
 
 
 #echo CLOUDCOVER=$CLOUDCOVER

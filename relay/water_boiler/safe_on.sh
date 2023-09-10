@@ -4,9 +4,17 @@ SLEEP_SECONDS=10
 BMS_MIN_POWER=-200
 
 DIR=$(dirname "$0")
-source $DIR/config.sh
 
-echo "`date -u` Trying to switch water boiler on" | tee -a $LOGFILE
+source $DIR/config.sh
+source $DIR/pins.sh
+
+BOILER_ON=$(gpio -g read $PIN)
+if [[ $BOILER_ON -eq 1 ]]; then
+	echo "`date` Boiler is already on" | tee -a $LOGFILE
+	exit 0;
+fi
+
+echo "`date` Trying to switch water boiler on" | tee -a $LOGFILE
 
 bash $DIR/on.sh
 
@@ -18,6 +26,6 @@ BMS_POWER=$("$DIR/../../battery/bms/daly/get.sh" power)
 echo "BMS_POWER = $BMS_POWER" 
 
 if (( $(echo "$BMS_POWER < $BMS_MIN_POWER" | bc -l) )); then
-        echo "`date -u` Disabling water boiler $BMS_POWER < $BMS_MIN_POWER" | tee -a $LOGFILE
+        echo "`date` Disabling water boiler $BMS_POWER < $BMS_MIN_POWER" | tee -a $LOGFILE
         bash $DIR/off.sh
 fi
