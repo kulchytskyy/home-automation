@@ -1,14 +1,24 @@
 #!/bin/bash
 
+LOCKFILE=/var/lock/daly.lck
 DEVICE="/dev/ttyUSB0"
 BMS_CLI="daly-bms-cli"
 
-SOC_OUTPUT=`$BMS_CLI  -d $DEVICE --soc`
+#(
+#  echo "Obtaining lock"
+#  flock -w 2 9 || { echo "!!! Failed to acquire lock. Aborting"; exit 1; }
+#echo $BMS_CLI -d $DEVICE --soc
+  SOC_OUTPUT=`$BMS_CLI -d $DEVICE --soc`
+#  echo $SOC_OUTPUT
+  
+#) 9>$LOCKFILE
+
 #VOLTAGE=`echo $SOC_OUTPUT | jq ".total_voltage"`
 #CURRENT=`echo $SOC_OUTPUT | jq ".current"`
 #SOC=`echo $SOC_OUTPUT | jq ".soc_percent"`
 
 #echo "soc=$SOC_OUTPUT"
+#echo "soc=$OUT"
 #echo "voltage=$VOLTAGE"
 #echo "current=$CURRENT"
 #echo "soc=$SOC"

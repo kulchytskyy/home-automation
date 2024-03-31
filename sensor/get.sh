@@ -61,6 +61,11 @@ case "$1" in
     	    $DIR/../boiler/emodul/get.sh >/dev/null
             echo $($DIR/../boiler/emodul/parse.sh 1007 sensor);
     ;;
+    boiler2_ch_emodul_temp)
+    	    $DIR/../boiler/emodul/get.sh >/dev/null
+            echo $($DIR/../boiler/emodul/parse.sh 1013 valveTemp);
+    ;;
+    
 
     #sdr
     livingroom)

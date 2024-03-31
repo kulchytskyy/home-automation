@@ -30,6 +30,18 @@ if [ ! -z $TEMP3 ]; then
    URL_PARAMS="$URL_PARAMS&field3=$TEMP3"
 fi
 
+#VOLTAGE1=$($DIR/../../sensor/get.sh voltage1)
+#echo "VOLTAGE1=$VOLTAGE1"
+#if [ ! -z $VOLTAGE1 ]; then
+#   URL_PARAMS="$URL_PARAMS&field7=$VOLTAGE1"
+#fi
+
+#VOLTAGE2=$($DIR/../../sensor/get.sh voltage2)
+#echo "VOLTAGE2=$VOLTAGE2"
+#if [ ! -z $VOLTAGE2 ]; then
+#   URL_PARAMS="$URL_PARAMS&field8=$VOLTAGE2"
+#fi
+
 ###
 ### send
 ###

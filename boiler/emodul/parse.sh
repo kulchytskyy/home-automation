@@ -13,6 +13,8 @@ case $FIELD_TYPE in
     SELECTOR=".params.gear";;
   status)
     SELECTOR=".params.workingStatus";;
+  valveTemp)
+    SELECTOR=".params.currentTemp";;
 esac
 
 #echo $FIELD_ID
@@ -25,7 +27,7 @@ function sensor_format {
 
 RAW=`cat $DATA_FILE | $JQ ".tiles[] | select (.id == $FIELD_ID) | $SELECTOR"`
 
-if [ $FIELD_TYPE = "sensor" ]; then
+if [ $FIELD_TYPE = "sensor" ] || [ $FIELD_TYPE = "valveTemp" ]; then
   VAL=$(sensor_format $RAW)
 else
   VAL=$RAW
