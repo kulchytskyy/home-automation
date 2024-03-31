@@ -3,9 +3,9 @@
 DIR=$(dirname "$0")
 source $DIR/config.sh
 
-echo "`date` Checking if water boiler can be switched on" | tee -a $LOGFILE
+echo "`date` Checking weather" | tee -a $LOGFILE
 
-IS_SUNNY=`$DIR/is_sunny.sh`
+IS_SUNNY=`$DIR/../../weather/is_sunny.sh`
 echo IS_SUNNY=$IS_SUNNY
 
 if [ "$IS_SUNNY" = true ] ; then

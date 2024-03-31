@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BMS_MIN_POWER=-200
+BMS_MIN_POWER=-400
 
 DIR=$(dirname $0)
 source $DIR/pins.sh

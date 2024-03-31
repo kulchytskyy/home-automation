@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SLEEP_SECONDS=10
-BMS_MIN_POWER=-200
+SLEEP_SECONDS=15
+BMS_MIN_POWER=-300
 
 DIR=$(dirname "$0")
 
