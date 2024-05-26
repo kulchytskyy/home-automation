@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SLEEP_SECONDS=15
-BMS_MIN_POWER=-300
+BMS_MIN_CURRENT=-30
 
 DIR=$(dirname "$0")
 
@@ -21,11 +21,11 @@ bash $DIR/on.sh
 echo "Waiting $SLEEP_SECONDS seconds to check power consumption"
 sleep $SLEEP_SECONDS
 
-BMS_POWER=$("$DIR/../../battery/bms/daly/get.sh" power)
+BMS_CURRENT=$("$DIR/../../battery/bms/daly/get_current.sh")
 
-echo "BMS_POWER = $BMS_POWER" 
+echo "BMS_CURRENT = $BMS_CURRENT" 
 
-if (( $(echo "$BMS_POWER < $BMS_MIN_POWER" | bc -l) )); then
-        echo "`date` Disabling water boiler $BMS_POWER < $BMS_MIN_POWER" | tee -a $LOGFILE
+if (( $(echo "$BMS_CURRENT < $BMS_MIN_CURRENT" | bc -l) )); then
+        echo "`date` Disabling water boiler $BMS_CURRENT < $BMS_MIN_CURRENT" | tee -a $LOGFILE
         bash $DIR/off.sh
 fi

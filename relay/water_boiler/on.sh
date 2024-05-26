@@ -11,4 +11,4 @@ bash $DIR/../mode.sh
 bash $DIR/../write.sh 1
 
 
- 
+$DIR/../../notify/notify.sh "Switched on water boiler" 

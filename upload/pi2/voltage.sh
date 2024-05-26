@@ -27,25 +27,29 @@ echo $(date)
 #   URL_PARAMS="$URL_PARAMS&field2=$VOLTAGE3"
 #fi
 
-DALY_VOLTAGE=$($DIR/../../battery/bms/daly/get.sh voltage)
+DALY_DIR="$DIR/../../battery/bms/daly"
+DALY_DATA=$($DALY_DIR/get.sh soc)
+echo $DALY_DATA
+
+DALY_VOLTAGE=$(echo $DALY_DATA | $DALY_DIR/parse.sh voltage)
 echo "DALY_VOLTAGE=$DALY_VOLTAGE"
 if [ ! -z $DALY_VOLTAGE ]; then
    URL_PARAMS="$URL_PARAMS&field4=$DALY_VOLTAGE"
 fi
 
-DALY_POWER=$($DIR/../../battery/bms/daly/get.sh power)
+DALY_POWER=$(echo $DALY_DATA | $DALY_DIR/parse.sh power)
 echo "DALY_POWER=$DALY_POWER"
 if [ ! -z $DALY_POWER ]; then
    URL_PARAMS="$URL_PARAMS&field5=$DALY_POWER"
 fi
 
-DALY_SOC=$($DIR/../../battery/bms/daly/get.sh soc)
+DALY_SOC=$(echo $DALY_DATA | $DALY_DIR/parse.sh soc)
 echo "DALY_SOC=$DALY_SOC"
 if [ ! -z $DALY_SOC ]; then
    URL_PARAMS="$URL_PARAMS&field6=$DALY_SOC"
 fi
 
-DALY_DIFF=$($DIR/../../battery/bms/daly/get.sh cells_diff)
+DALY_DIFF=$(echo $DALY_DATA | $DALY_DIR/parse.sh cells_diff)
 echo "DALY_DIFF=$DALY_DIFF"
 if [ ! -z $DALY_DIFF ]; then
    URL_PARAMS="$URL_PARAMS&field7=$DALY_DIFF"
@@ -56,6 +60,6 @@ fi
 ### send
 ###
 echo "url_params=$URL_PARAMS"
-wget -nv -O- "$API_URL?api_key=$API_KEY&$URL_PARAMS"
+#wget -nv -O- "$API_URL?api_key=$API_KEY&$URL_PARAMS"
 
 echo -e "\n\n"
