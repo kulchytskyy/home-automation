@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CLOUDCOVER_MAX=50
+CLOUDCOVER_MAX=60
 
 DIR=$(dirname "$0")
 source $DIR/config.sh

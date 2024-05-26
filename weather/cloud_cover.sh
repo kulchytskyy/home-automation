@@ -3,7 +3,7 @@
 DIR=$(dirname "$0")
 source $DIR/config.sh
 
-PROVIDERS="weatherstack weatherapi"
+PROVIDERS="openweather weatherstack weatherapi"
 #PROVIDERS="weatherapi weatherstack"
 
 for provider in $PROVIDERS
