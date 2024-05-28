@@ -28,7 +28,7 @@ echo $(date)
 #fi
 
 DALY_DIR="$DIR/../../battery/bms/daly"
-DALY_DATA=$($DALY_DIR/get.sh soc)
+DALY_DATA=$($DALY_DIR/get.sh all)
 echo $DALY_DATA
 
 DALY_VOLTAGE=$(echo $DALY_DATA | $DALY_DIR/parse.sh voltage)
@@ -60,6 +60,6 @@ fi
 ### send
 ###
 echo "url_params=$URL_PARAMS"
-#wget -nv -O- "$API_URL?api_key=$API_KEY&$URL_PARAMS"
+wget -nv -O- "$API_URL?api_key=$API_KEY&$URL_PARAMS"
 
 echo -e "\n\n"
