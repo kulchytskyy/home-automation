@@ -5,10 +5,10 @@ source $DIR/config.sh
 
 echo "`date` Checking weather" | tee -a $LOGFILE
 
-IS_SUNNY=`$DIR/../../weather/is_sunny.sh`
-echo IS_SUNNY=$IS_SUNNY
+solarpower=`$DIR/../../weather/solarpower.sh`
+echo solarpower=$solarpower
 
-if [ "$IS_SUNNY" = true ] ; then
+if (( $solarpower >= $REQUIRED_SOLAR_POWER )); then
 	bash $DIR/safe_on.sh
 else
 	echo "`date` No sun" | tee -a $LOGFILE
