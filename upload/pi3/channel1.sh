@@ -23,6 +23,7 @@ if [ ! -z $T ]; then
 fi
 
 ###	emodul
+N=4
 EMODULE_STATUS=`$DIR/../../boiler/emodul/get.sh`
 echo "EMODULE_STATUS=$EMODULE_STATUS"
 if [ "$EMODULE_STATUS" = 'active' ]; then 

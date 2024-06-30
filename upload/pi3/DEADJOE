@@ -1,0 +1,25 @@
+
+*** These modified files were found in JOE when it aborted on Thu Oct 20 22:52:24 2022
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+EDIT
+
+*** File '(Unnamed)'
+get.sh
+monitor_pi3.sh
+get.sh
+channel1.sh
+get.sh
+get.sh
+channel1.sh
+channel2.sh
+channel1.sh
+/home/pi/home-automation/.git/COMMIT_EDITMSG
+channel1.sh
+
+*** File '* Startup Log *'
+Processing '/etc/joe/joerc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/joerc

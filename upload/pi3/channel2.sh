@@ -10,8 +10,8 @@ URL_PARAMS=""
 echo $(date) 
 
 
-N=3
-for i in attic kidroom bathroom2 bedroom kidroom2; do
+N=2
+for i in bathroom attic kidroom bathroom2 bedroom kidroom2; do
    T=`$DIR/../../sensor/get.sh $i`
    echo "$i=$T"
    if [ ! -z $T ]; then
