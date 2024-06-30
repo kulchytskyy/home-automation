@@ -46,17 +46,26 @@ case "$1" in
 
     #boiler
     boiler_ch_temp)
+    	    $DIR/../boiler/emodul/get.sh >/dev/null
             echo $($DIR/../boiler/emodul/parse.sh 1006 sensor);
     ;;
     boiler_outdoor_temp)
+    	    $DIR/../boiler/emodul/get.sh >/dev/null
             echo $($DIR/../boiler/emodul/parse.sh 1009 sensor);
     ;;
     boiler_fan)
+    	    $DIR/../boiler/emodul/get.sh >/dev/null
             echo $($DIR/../boiler/emodul/parse.sh 1011 fan);
     ;;
     boiler_dhw)
+    	    $DIR/../boiler/emodul/get.sh >/dev/null
             echo $($DIR/../boiler/emodul/parse.sh 1007 sensor);
     ;;
+    boiler2_ch_emodul_temp)
+    	    $DIR/../boiler/emodul/get.sh >/dev/null
+            echo $($DIR/../boiler/emodul/parse.sh 1013 valveTemp);
+    ;;
+    
 
     #sdr
     livingroom)
@@ -86,9 +95,28 @@ case "$1" in
     dhw_center)
             echo $($DIR/../temperature/w1/get_abs.sh "28-021319cc85aa");
     ;;
+    boiler2_ch_temp)
+            echo $($DIR/../temperature/w1/get_abs.sh "28-021319dd9aaa");
+    ;;
     hum_basement)
             echo $($DIR/../humidity/bme280/get.py 76);
     ;;
+    
+    #voltage
+    voltage1)
+            echo $($DIR/../voltage/ina3221/get.py 1);
+    ;;
+
+    voltage2)
+            echo $($DIR/../voltage/ina3221/get.py 2);
+    ;;
+
+    voltage3)
+            echo $($DIR/../voltage/ina3221/get.py 3);
+    ;;
+
+
+    
     *) echo "Unknown sensor: $1"; exit 1;;
 
 esac

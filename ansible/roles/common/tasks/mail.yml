@@ -11,6 +11,6 @@
 
 - name: copy mail config
   template:
-    src: files/msmtprc
+    src: templates/msmtprc
     dest: /etc/msmtprc
   become: yes

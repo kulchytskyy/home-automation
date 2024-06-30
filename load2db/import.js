@@ -18,10 +18,25 @@ mysql.createConnection(settings.db_connection_prop)
         func.read_sensor_info(connection, sensor_id)
             .then(sensor => {
                 console.log('sensor: ', sensor);
-                func.import_year(connection, sensor, year)
-                  .then(console.log)
-                  .catch(console.error);
+                if (year == 'all'){
+                  import_all_years(connection, sensor)
+                      .then(console.log)
+                      .catch(console.error);
+                 }
+                else{
+                    func.import_year(connection, sensor, year)
+                      .then(console.log)
+                      .catch(console.error);
+                }
             })
             .catch(console.error);
     });
 
+
+async function import_all_years (connection, sensor) {
+    for (var i=2020; i<=moment().year(); i++){
+      console.log("###### YEAR: "+i);
+      await func.import_year(connection, sensor, i);
+    }
+    return "all done!";
+}

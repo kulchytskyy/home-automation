@@ -1,0 +1,8 @@
+/var/log/ha/*.log {
+    missingok
+    monthly
+    create 0664 pi pi
+    minsize 1M
+    rotate 2
+    compress
+}
