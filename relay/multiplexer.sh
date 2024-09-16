@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DIR=$(dirname "$0")
+
 pin=$1
 MULTIPLEXER_PINS=( 21 20 16 12 )
 
@@ -32,8 +34,18 @@ for i in {1..4}; do
 	multiplexer_pin=${MULTIPLEXER_PINS[$i-1]}
 	echo "multiplexer_pin=$multiplexer_pin active=$active"
 	
-	gpio -g mode $multiplexer_pin out
-	gpio -g write $multiplexer_pin $active
+	if (( $1==1 )); then
+        	v="dh"
+	else
+        	v="dl"
+	fi
+	
+	#gpio -g mode $multiplexer_pin out
+	#gpio -g write $multiplexer_pin $active
+	#$DIR/write.sh $multiplexer_pin $v
+
+	raspi-gpio set $multiplexer_pin $v
+
 done
 
 
