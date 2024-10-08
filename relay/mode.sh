@@ -1,4 +1,5 @@
 #!/bin/bash
 
-gpio -g mode $PIN out
+#not used now
+#gpio -g mode $PIN out
  

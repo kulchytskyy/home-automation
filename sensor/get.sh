@@ -32,10 +32,10 @@ case "$1" in
             echo $($DIR/../temperature/w1/get.sh "28-3c01b55639bf");
     ;;
     hum_living)
-            echo $($DIR/../temperature/sdr/get.sh 20);
+            echo $($DIR/../temperature/sdr/get.sh 35);
     ;;
     hum_outdoor)
-            echo $($DIR/../temperature/sdr/get.sh 169);
+            echo $($DIR/../temperature/sdr/get.sh 164);
     ;;
     hum_floor1)
             echo $($DIR/../humidity/bme280/get.py 77);
@@ -69,13 +69,13 @@ case "$1" in
 
     #sdr
     livingroom)
-            echo $($DIR/../temperature/sdr/get_temp.sh 55);
+            echo $($DIR/../temperature/sdr/get_temp.sh 5);
     ;;
     bathroom)
             echo $($DIR/../temperature/sdr/get_temp.sh 14);
     ;;
     outdoor)
-            echo $($DIR/../temperature/sdr/get_temp.sh 58);
+            echo $($DIR/../temperature/sdr/get_temp.sh 49);
     ;;
 
 

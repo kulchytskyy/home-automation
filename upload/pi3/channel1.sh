@@ -10,18 +10,20 @@ URL_PARAMS=""
 echo $(date) 
 
 ### ea2
-N=1
-for i in livingroom bathroom outdoor; do
-   T=`$DIR/../../sensor/get.sh $i`
-   echo "$i=$T"
-   if [ ! -z $T ]; then
-      URL_PARAMS="$URL_PARAMS&field$N=$T"
-   fi
-   N=$(($N+1))
-done
+T=`$DIR/../../sensor/get.sh livingroom`
+echo "livingroom=$T"
+if [ ! -z $T ]; then
+   URL_PARAMS="$URL_PARAMS&field1=$T"
+fi
 
+T=`$DIR/../../sensor/get.sh outdoor`
+echo "outdoor=$T"
+if [ ! -z $T ]; then
+   URL_PARAMS="$URL_PARAMS&field3=$T"
+fi
 
 ###	emodul
+N=4
 EMODULE_STATUS=`$DIR/../../boiler/emodul/get.sh`
 echo "EMODULE_STATUS=$EMODULE_STATUS"
 if [ "$EMODULE_STATUS" = 'active' ]; then 

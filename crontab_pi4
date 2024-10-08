@@ -1,0 +1,5 @@
+PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/home/pi/.local/bin
+
+
+#Ansible: voltage
+*/5 * * * * ~/ha/upload/pi4/voltage.sh >>/var/log/ha/voltage.log 2>&1
