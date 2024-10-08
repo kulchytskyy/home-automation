@@ -1,0 +1,34 @@
+
+*** These modified files were found in JOE when it aborted on Thu Jun 13 20:29:51 2024
+*** JOE was aborted because the terminal closed
+
+*** File '(Unnamed)'
+}\n
+}\n
+
+*** File '(Unnamed)'
+valve
+}
+}
+boilder2
+boiler2
+
+*** File '(Unnamed)'
+solarpower.sh
+solarpower.sh
+solarpower.sh
+solarpower.sh
+smart_on.sh
+config.sh
+config.sh
+config.sh
+config.sh
+config.sh
+config.sh
+config.sh
+
+*** File '* Startup Log *'
+Processing '/etc/joe/joerc'...
+Processing '/etc/joe/ftyperc'...
+Finished processing /etc/joe/ftyperc
+Finished processing /etc/joe/joerc

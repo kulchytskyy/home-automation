@@ -60,6 +60,8 @@ fi
 ### send
 ###
 echo "url_params=$URL_PARAMS"
+#wget -v -O- "$API_URL?api_key=$API_KEY&$URL_PARAMS"
+
 wget -nv -O- "$API_URL?api_key=$API_KEY&$URL_PARAMS"
 
 echo -e "\n\n"

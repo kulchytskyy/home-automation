@@ -12,9 +12,13 @@ URL="https://api.forecast.solar/estimate/$LAT/$LON/$DEC/$AZ/$KWP"
 
 echo $URL >> $LOGFILE
 
-DATA=`wget -q -O- $URL`
-echo $DATA > $DATAFILE
-echo $DATA >> $LOGFILE
+DATA=`wget -q -O- "$URL"`
+status_code=$?
+echo "status code: $status_code" >> $LOGFILE
+if [ "$status_code" -eq "0" ]; then
+	echo $DATA > $DATAFILE
+	echo $DATA >> $LOGFILE
+fi	
 
 
 

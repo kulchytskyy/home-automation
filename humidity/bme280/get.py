@@ -22,10 +22,13 @@ data = bme280.sample(bus, address, calibration_params)
 #print(data.timestamp)
 #print(data.temperature)
 #print(data.pressure)
-#print(round(data.humidity,2))
+temperature = round(data.temperature,2)
+humidity = round(data.humidity,2)
+#print(humidity)
 
 # there is a handy string representation too
 #print(data)
 
-print (str(round(data.temperature,2)) + "|" + str(round(data.humidity,2)))
+if humidity > 5 and humidity < 95:
+    print (str(temperature) + "|" + str(humidity))
 
