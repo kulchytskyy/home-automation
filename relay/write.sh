@@ -12,4 +12,3 @@ fi
 #echo $v
 
 raspi-gpio set $PIN op $v
- 
