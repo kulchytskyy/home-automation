@@ -16,11 +16,11 @@ DIR=$(dirname "$0")
   flock -n 9 || { echo "!!! Failed to acquire lock. Aborting"; exit 1; }
   bash $DIR/multiplexer.sh $PIN
   #gpio -g mode $SIGNAL_PIN out
-  raspi-gpio set $SIGNAL_PIN op dh
+  raspi-gpio set $SIGNAL_PIN op dl
   #gpio -g write $SIGNAL_PIN $ACTIVE_VALUE
   bash $DIR/sleep.sh
   #gpio -g write $SIGNAL_PIN $INACTIVE_VALUE
-  raspi-gpio set $SIGNAL_PIN op dl
+  raspi-gpio set $SIGNAL_PIN op dh
 ) 9>$LOCKFILE
 
  
