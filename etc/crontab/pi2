@@ -1,0 +1,46 @@
+PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/home/pi/.local/bin
+
+#Ansible: shutters up
+0 7 * * * ~/ha/relay/all/up.sh >>/var/log/ha/relay.log 2>&1
+#50 7 * * * ~/ha/relay/all2/up.sh >>/var/log/ha/relay.log 2>&1
+
+#Ansible: shutters down
+0 22 * * * ~/ha/relay/all/down.sh >>/var/log/ha/relay.log 2>&1
+5 22 * * * ~/ha/relay/all2/down.sh >>/var/log/ha/relay.log 2>&1
+
+#Ansible: temperature 1
+0-59/5 * * * * ~/ha/upload/pi2/channel1.sh >>/var/log/ha/upload1.log 2>&1
+#Ansible: temperature 3
+0-59/5 * * * * ~/ha/upload/pi2/channel3.sh >>/var/log/ha/upload3.log 2>&1
+#Ansible: voltage
+*/1 * * * * ~/ha/upload/pi2/voltage.sh >>/var/log/ha/voltage.log 2>&1
+#Ansible: temperature 4
+0-59/5 * * * * ~/ha/upload/pi2/channel4.sh >>/var/log/ha/upload4.log 2>&1
+#Ansible: monitor
+*/5 * * * * ~/ha/monitor/monitor_p2.sh >>/var/log/ha/monitor.log 2>&1
+#Ansible: boiler dhw monitor
+#*/5 * * * * ~/ha/boiler/dhw.sh >>/var/log/ha/dhw_monitor.log 2>&1
+#Ansible: boiler night stop
+0 0 * * * ~/ha/boiler/stop.sh >>/var/log/ha/boiler.log 2>&1
+#Ansible: boiler night start
+#30 5 * * * ~/ha/boiler/night/start.sh >>/var/log/ha/boiler.log 2>&1
+#Ansible: boiler sunny stop
+#*/15 9-15 * * * ~/ha/boiler/sunny/stop.sh >>/var/log/ha/boiler.log 2>&1
+
+#radiator
+#*/1 * * * * ~/ha/boiler/radiator_monitor1.sh >>/var/log/ha/cron/radiator.log 2>&1
+*/1 * * * * (sleep 30; ~/ha/boiler/radiator_monitor2.sh) >>/var/log/ha/cron/radiator.log 2>&1
+
+#water boiler off
+* * * * * (sleep 10; ~/ha/relay/water_boiler/smart_off.sh) >>/var/log/ha/cron/water_boiler.log 2>&1
+* * * * * (sleep 30; ~/ha/relay/water_boiler/smart_off.sh) >>/var/log/ha/cron/water_boiler.log 2>&1
+* * * * * (sleep 50; ~/ha/relay/water_boiler/smart_off.sh) >>/var/log/ha/cron/water_boiler.log 2>&1
+
+#water boiler on
+5 8-15 * * * (sleep 20; ~/ha/relay/water_boiler/smart_on.sh) >>/var/log/ha/cron/water_boiler.log 2>&1
+35 8-15 * * * (sleep 20; ~/ha/relay/water_boiler/smart_on.sh) >>/var/log/ha/cron/water_boiler.log 2>&1
+
+0 17 * * * ~/ha/relay/water_boiler/off.sh >>/var/log/ha/cron/water_boiler.log 2>&1
+
+#weather
+58 5-17/2 * * * ~/ha/weather/forecast.solar/download.sh >>/var/log/ha/cron/forecast.solar.log 2>&1
