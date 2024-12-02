@@ -16,11 +16,11 @@ echo $(date)
 BOILER2_CH_TEMP=$($DIR/../../sensor/get.sh boiler2_ch_temp)
 if [ -z $BOILER2_CH_TEMP ]; then
 	echo "Retrieving boilder2 ch temp from emodul"
-	#BOILER2_CH_TEMP=$($DIR/../../sensor/get.sh boiler2_ch_emodul_temp)
-	#if [ ! -z $BOILER2_CH_TEMP ]; then
-	#	echo "BOILER2_CH_EMODUL_TEMP=$BOILER2_CH_TEMP"
-	#	URL_PARAMS="$URL_PARAMS&field2=$BOILER2_CH_TEMP"
-	#fi
+	BOILER2_CH_TEMP=$($DIR/../../sensor/get.sh boiler2_ch_emodul_temp)
+	if [ ! -z $BOILER2_CH_TEMP ]; then
+		echo "BOILER2_CH_EMODUL_TEMP=$BOILER2_CH_TEMP"
+		URL_PARAMS="$URL_PARAMS&field2=$BOILER2_CH_TEMP"
+	fi
 else 
 	echo "BOILER2_CH_TEMP=$BOILER2_CH_TEMP"
 	URL_PARAMS="$URL_PARAMS&field2=$BOILER2_CH_TEMP"
