@@ -9,23 +9,7 @@ URL_PARAMS=""
 
 echo $(date) 
 
-#VOLTAGE1=$($DIR/../../sensor/get.sh voltage1)
-#echo "VOLTAGE1=$VOLTAGE1"
-#if [ ! -z $VOLTAGE1 ]; then
-#   URL_PARAMS="$URL_PARAMS&field1=$VOLTAGE1"
-#fi
-
-#VOLTAGE2=$($DIR/../../sensor/get.sh voltage2)
-#echo "VOLTAGE2=$VOLTAGE2"
-#if [ ! -z $VOLTAGE2 ]; then
-#   URL_PARAMS="$URL_PARAMS&field2=$VOLTAGE2"
-#fi
-
-#VOLTAGE3=$($DIR/../../sensor/get.sh voltage3)
-#echo "VOLTAGE3=$VOLTAGE3"
-#if [ ! -z $VOLTAGE3 ]; then
-#   URL_PARAMS="$URL_PARAMS&field2=$VOLTAGE3"
-#fi
+### DALY BMS
 
 DALY_DIR="$DIR/../../battery/bms/daly"
 DALY_DATA=$($DALY_DIR/get.sh all)
