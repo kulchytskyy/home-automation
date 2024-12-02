@@ -8,10 +8,8 @@
       - git
       - mc
       - bc
-      - mailutils
       - nodejs
       - npm
-      - raspi-gpio
     state: present
     update_cache: yes
     

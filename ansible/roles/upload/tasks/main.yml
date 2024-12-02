@@ -1,5 +1,5 @@
 ---
 
-- include_tasks: cron.yml
+#- include_tasks: cron.yml
 - include_tasks: packages.yml
 
