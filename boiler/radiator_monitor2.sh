@@ -27,7 +27,7 @@ if (( $(echo "$BOILER2_CH_TEMP > $BOILER2_CH_MAX_TEMP" | bc -l) )); then
 	fi	
 
     	bash $DIR/../relay/radiator/on.sh
-       	$DIR/notify/notify.sh "Enabling radiator"
+       	$DIR/../notify/notify.sh "Enabling radiator"
 else 
 	if [[ $RADIATOR_DISABLED -eq 1 ]]; then
 		echo "Already disabled";
@@ -35,5 +35,5 @@ else
 	fi	
 
     	bash $DIR/../relay/radiator/off.sh
-       	$DIR/notify/notify.sh "Disabling radiator"
+       	$DIR/../notify/notify.sh "Disabling radiator"
 fi
