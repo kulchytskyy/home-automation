@@ -2,6 +2,8 @@ DIR=$(dirname $0)
 
 source $DIR/config.sh
 
+mkdir -p $DATA_DIR
+
 LOGIN_CMD="$CURL $API_URL/login $COMMON_HEADER --data-binary '$LOGIN_PAYLOAD' > $LOGIN_DATA_FILE"
 #echo "$LOGIN_CMD"
 #echo
