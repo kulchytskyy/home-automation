@@ -4,9 +4,11 @@ DIR=$(dirname "$0")
 source $DIR/config.sh
 source $DIR/../config.sh
 
-MSG="$1"
+API_KEY="$1"
+CHAT_ID="$2"
+MSG="$3"
 
-URL="https://api.telegram.org/bot$TELEGRAM_HA_ALERT_BOT_API_KEY/sendMessage"
+URL="https://api.telegram.org/bot$API_KEY/sendMessage"
 #echo $URL
 
 curl "$URL" -s \

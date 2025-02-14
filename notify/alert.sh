@@ -2,6 +2,6 @@
 
 DIR=$(dirname "$0")
 
-$DIR/telegram/info.sh "$1"
+$DIR/telegram/alert.sh "$1"
 
 
