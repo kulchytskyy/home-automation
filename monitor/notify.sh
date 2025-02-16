@@ -7,27 +7,28 @@ DIR=$(dirname $0)
 type=$1
 message=$2
 
-LAST_LINE=`grep  "|$type|" $HISTORY | tail -n 1`
+#LAST_LINE=`grep  "|$type|" $HISTORY | tail -n 1`
 #echo $LAST_LINE
 
-DATE_STR=`echo $LAST_LINE | cut -d "|" -f 1`
+#DATE_STR=`echo $LAST_LINE | cut -d "|" -f 1`
 #echo $DATE_STR
 
-DATE=$(date -d "$DATE_STR" +%s)
+#DATE=$(date -d "$DATE_STR" +%s)
 #echo $DATE
 
-AGO_DATE=$(date --date='6 hours ago' +%s)
+#AGO_DATE=$(date --date='6 hours ago' +%s)
 #echo $AGO_DATE
 
-if [ $DATE -ge $AGO_DATE ]; then
-	echo "already sent"
-else
-	echo "not sent"
+#if [ $DATE -ge $AGO_DATE ]; then
+#	echo "already sent"
+#else
+#	echo "not sent"
 	
 	echo "`date`|$type|$message" >> $HISTORY
 
 	#notify --text "$message"
+	
 	#echo "" | mail -s "$message" "kulchytskyy@gmail.com"
-	$DIR/../notify/notify.sh "$type $message"
-fi
+	$DIR/../notify/alert.sh "$message"
+#fi
 

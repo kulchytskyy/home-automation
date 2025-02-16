@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR=$(dirname $0)
+NOTIFY=~/ha/monitor/notify.sh
 
 function check_value_gt {
 	if (( $(echo "$1 > $2" | bc -l) )); then 
@@ -25,7 +25,7 @@ function get_value {
 	#echo "act=$actual"
 	if [[ -z $actual ]]; then
 		echo "No data from $sensor";
- 		$DIR/notify.sh "$sensor_nodata" "No data from $sensor sensor";
+ 		$NOTIFY "$sensor_nodata" "No data from $sensor sensor";
  		return 1;
 	else
 		if [[ $sensor == hum_* ]]; then
@@ -36,6 +36,9 @@ function get_value {
 }
 
 function check {
+	#echo "check"
+	#echo "dir=$DIR"
+
 	actual=$1;
 	limit=$2;
 	operator=$3;
@@ -51,7 +54,7 @@ function check {
 
 	if [[ $res == 1 ]]; then 
 		echo "Limit reached";
- 		$DIR/notify.sh "$sensor" "$sensor=$actual (limit:$limit)";
+ 		$NOTIFY "$sensor" "$sensor=$actual (limit:$limit)";
 	fi	
 }
 
