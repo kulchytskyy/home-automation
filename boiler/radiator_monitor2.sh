@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BOILER2_CH_MAX_TEMP=78
+BOILER2_CH_MAX_TEMP=82
 
 DIR=$(dirname $0)
 
