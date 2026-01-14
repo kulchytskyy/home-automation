@@ -49,6 +49,9 @@ case "$1" in
     	    $DIR/../boiler/emodul/get.sh >/dev/null
             echo $($DIR/../boiler/emodul/parse.sh 1006 sensor);
     ;;
+    boiler_ch_temp_no_get)
+            echo $($DIR/../boiler/emodul/parse.sh 1006 sensor);
+    ;;
     boiler_outdoor_temp)
     	    $DIR/../boiler/emodul/get.sh >/dev/null
             echo $($DIR/../boiler/emodul/parse.sh 1009 sensor);
@@ -63,6 +66,9 @@ case "$1" in
     ;;
     boiler2_ch_emodul_temp)
     	    $DIR/../boiler/emodul/get.sh >/dev/null
+            echo $($DIR/../boiler/emodul/parse.sh 1013 valveTemp);
+    ;;
+    boiler2_ch_emodul_temp_no_get)
             echo $($DIR/../boiler/emodul/parse.sh 1013 valveTemp);
     ;;
     

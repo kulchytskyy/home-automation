@@ -1,0 +1,1 @@
+MQTT_CLIENT_ID=pi2_onewire
