@@ -1,0 +1,17 @@
+{
+    "sensors": {
+        "0316819430ff": "temperature/basement_laundry",
+        "0000052cf9c6": "temperature/basement_large",
+        "0416816c14ff": "temperature/basement_boiler",
+        "3c01b556867f": "temperature/dhw_top",
+        "021319cc85aa": "temperature/dhw_center",
+        "021319dd9aaa": "temperature/boiler2_ch_temp",
+        "03168123a0ff": "temperature/attic",
+        "0316811ffaff": "temperature/kidroom",
+        "0416810106ff": "temperature/bathroom2",
+        "0416812edaff": "temperature/bedroom",
+        "0516848757ff": "temperature/kidroom2",
+        "3c01b556458b": "temperature/floor1",
+        "3c01b55639bf": "temperature/floor2"
+    }
+}
