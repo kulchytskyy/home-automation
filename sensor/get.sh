@@ -81,7 +81,7 @@ case "$1" in
             echo $($DIR/../temperature/sdr/get_temp.sh 14);
     ;;
     outdoor)
-            echo $($DIR/../temperature/sdr/get_temp.sh 49);
+            echo $($DIR/../temperature/sdr/get_temp.sh 57);
     ;;
 
 
