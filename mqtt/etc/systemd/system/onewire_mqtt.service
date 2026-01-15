@@ -1,0 +1,16 @@
+Description=OneWire to MQTT Bridge for Home Assistant
+After=network.target
+
+[Service]
+# Ensure the path matches where you saved your script
+ExecStart=/usr/bin/python3 -u /home/pi/ha/mqtt/onewire_mqtt.py
+WorkingDirectory=/home/pi/ha/mqtt
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+# Small delay before restarting to prevent rapid loop crashes
+RestartSec=5s
+User=pi
+
+[Install]
+WantedBy=multi-user.target

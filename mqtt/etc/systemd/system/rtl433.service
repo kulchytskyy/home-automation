@@ -1,0 +1,27 @@
+[Unit]
+Description=RTL_433 to MQTT Bridge
+After=network.target
+
+[Service]
+Type=simple
+# Load variables from your existing config files
+EnvironmentFile=/home/pi/ha/mqtt/config.sh
+EnvironmentFile=/home/pi/.ha_creds
+
+# StandardOutput/Error set to inherit to ensure logs flow to journalctl
+StandardOutput=inherit
+StandardError=inherit
+
+# One single line for ExecStart to avoid backslash errors
+ExecStart=/usr/local/bin/rtl_433 -R 31 -R 165 -M bits:72 -F "mqtt://${MQTT_BROKER}:${MQTT_PORT},user=${MQTT_USER},pass=${MQTT_PASSWORD},retain=1,devices=rtl_433[/model][/channel]"
+
+
+# Restart policy: wait 10s if it fails (reduced from 60s for faster testing)
+Restart=always
+RestartSec=10s
+
+# Run as the 'pi' user
+User=pi
+
+[Install]
+WantedBy=multi-user.target

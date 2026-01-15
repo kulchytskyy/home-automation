@@ -5,7 +5,7 @@ import time
 BROKER = "192.168.1.70"  # Your Home Assistant IP
 PORT = 1883
 USER = "pi2"
-PASS = "yV9H23"
+PASS = ""
 TOPIC = "home/pi2/test"
 
 client = mqtt.Client()
