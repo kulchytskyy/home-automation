@@ -1,0 +1,16 @@
+{
+    "w1_sensors": {
+        "0316819430ff": "temperature/basement_laundry",
+        "0000052cf9c6": "temperature/basement_large",
+        "0416816c14ff": "temperature/basement_boiler",
+        "3c01b556867f": "temperature/dhw_top",
+        "021319cc85aa": "temperature/dhw_center",
+        "021319dd9aaa": "temperature/boiler2_ch_temp"
+    },
+    "i2c_sensors": {
+        "bus1_0x76": {
+            "name": "basement",
+            "mqtt_topic": "humidity/basement"
+        }
+    }
+}
