@@ -1,1 +1,3 @@
-MQTT_CLIENT_ID=pi2_onewire
+MQTT_ONEWIRE_CLIENT_ID=pi2_onewire
+
+

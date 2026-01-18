@@ -1,0 +1,23 @@
+[Unit]
+Description=I2C BME280 MQTT Bridge
+# Ensure the network is ready and the MQTT broker (if local) is up
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+# Setting the WorkingDirectory is vital so the script finds ./{hostname}/config.sh
+WorkingDirectory=/home/pi/ha/mqtt
+ExecStart=/usr/bin/python3 /home/pi/ha/mqtt/i2c_mqtt.py
+
+# Restart logic: if the script crashes (e.g., I2C bus error), wait 10s and try again
+Restart=always
+RestartSec=60
+
+# Logs will be sent to the system journal
+StandardOutput=inherit
+StandardError=inherit
+
+[Install]
+WantedBy=multi-user.target
