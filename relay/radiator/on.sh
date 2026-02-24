@@ -10,5 +10,6 @@ echo "`date -u` Enabling radiator" | tee -a $LOGFILE
 bash $DIR/../mode.sh
 bash $DIR/../write.sh 0
 
+state=$($DIR/../../mqtt/pin_state.sh $PIN $ENABLED_VALUE)
+$($DIR/../../mqtt/mqtt.sh "$TOPIC/state" $state)
 
- 

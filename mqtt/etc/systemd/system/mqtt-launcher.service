@@ -1,0 +1,16 @@
+[Unit]
+Description=MQTT Launcher Service
+After=network.target mosquitto.service
+
+[Service]
+WorkingDirectory=/home/pi/ha/mqtt
+PermissionsStartOnly=true
+ExecStart=/usr/bin/python3 mqtt-launcher.py launcher.conf
+#StandardOutput=inherit
+#StandardError=inherit
+StandardOutput=journal
+StandardError=journal
+User=pi
+
+[Install]
+WantedBy=multi-user.target

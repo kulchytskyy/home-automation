@@ -12,4 +12,6 @@ bash $DIR/../write.sh 0
 
 $DIR/../../notify/notify.sh "Switched off water boiler"
 
+state=$($DIR/../../mqtt/pin_state.sh $PIN $ENABLED_VALUE)
+$($DIR/../../mqtt/mqtt.sh "$TOPIC/state" $state)
  
